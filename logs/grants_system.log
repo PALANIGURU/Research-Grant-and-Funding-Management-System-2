@@ -1,0 +1,46 @@
+INFO 2026-06-30 16:19:13,910 signals 40648 48392 New user registered: test@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:15,407 signals 40648 48392 New user registered: test@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:16,891 signals 40648 48392 New user registered: newuser@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:17,597 signals 40648 48392 New user registered: admin@example.com (role: ADMIN)
+INFO 2026-06-30 16:19:18,273 signals 40648 48392 New user registered: test@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:19,727 signals 40648 48392 New user registered: test@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:20,420 signals 40648 48392 New user registered: test@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:21,203 signals 40648 48392 New user registered: manager@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:21,957 signals 40648 48392 New user registered: manager@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:21,959 services 40648 48392 Grant GRT-202606-72D7C117 status updated from DRAFT to OPEN by manager@example.com
+INFO 2026-06-30 16:19:21,960 services 40648 48392 Grant GRT-202606-72D7C117 status updated from OPEN to CLOSED by manager@example.com
+INFO 2026-06-30 16:19:22,679 signals 40648 48392 New user registered: manager@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:23,399 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:24,099 signals 40648 48392 New user registered: manager@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:24,788 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:24,790 services 40648 48392 Proposal PRP-202606-480BC166 submitted by researcher@example.com
+INFO 2026-06-30 16:19:24,793 services 40648 48392 Proposal PRP-202606-480BC166 transitioned from SUBMITTED to UNDER_REVIEW by user manager@example.com
+INFO 2026-06-30 16:19:24,794 services 40648 48392 Proposal PRP-202606-480BC166 transitioned from UNDER_REVIEW to REJECTED by user manager@example.com
+INFO 2026-06-30 16:19:25,553 signals 40648 48392 New user registered: finance@example.com (role: FINANCE_OFFICER)
+INFO 2026-06-30 16:19:26,405 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:26,408 services 40648 48392 Budget for grant GRT-202606-7AFD4CD8 initialized by finance@example.com
+INFO 2026-06-30 16:19:27,178 signals 40648 48392 New user registered: finance@example.com (role: FINANCE_OFFICER)
+INFO 2026-06-30 16:19:27,940 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:27,943 services 40648 48392 Budget for grant GRT-202606-4719B705 initialized by finance@example.com
+INFO 2026-06-30 16:19:28,641 signals 40648 48392 New user registered: finance@example.com (role: FINANCE_OFFICER)
+INFO 2026-06-30 16:19:29,314 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:29,316 services 40648 48392 Budget for grant GRT-202606-2535802D initialized by finance@example.com
+INFO 2026-06-30 16:19:29,318 services 40648 48392 Expense of 8000.0 recorded against TRAVEL for grant GRT-202606-2535802D by researcher@example.com
+INFO 2026-06-30 16:19:30,092 signals 40648 48392 New user registered: manager@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:30,785 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:30,788 services 40648 48392 Cron check: updated 1 milestones to OVERDUE.
+INFO 2026-06-30 16:19:31,497 signals 40648 48392 New user registered: manager@example.com (role: GRANT_MANAGER)
+INFO 2026-06-30 16:19:32,195 signals 40648 48392 New user registered: researcher@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:32,199 services 40648 48392 Progress Report RPT-202606-FEF2DAA1 submitted by researcher@example.com
+INFO 2026-06-30 16:19:32,864 signals 40648 48392 New user registered: user1@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:33,566 signals 40648 48392 New user registered: user2@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:33,567 services 40648 48392 Notification sent to user1@example.com: System Alert
+INFO 2026-06-30 16:19:34,260 signals 40648 48392 New user registered: user1@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:34,945 signals 40648 48392 New user registered: user2@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:34,946 services 40648 48392 Bulk notification sent to 2 users: System Updates
+INFO 2026-06-30 16:19:35,691 signals 40648 48392 New user registered: user1@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:36,398 signals 40648 48392 New user registered: user2@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:36,399 services 40648 48392 Notification sent to user1@example.com: Test Title
+INFO 2026-06-30 16:19:37,103 signals 40648 48392 New user registered: admin@example.com (role: ADMIN)
+INFO 2026-06-30 16:19:37,847 signals 40648 48392 New user registered: newguy@example.com (role: RESEARCHER)
+INFO 2026-06-30 16:19:38,559 signals 40648 48392 New user registered: admin@example.com (role: ADMIN)
