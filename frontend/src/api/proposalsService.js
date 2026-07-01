@@ -1,0 +1,31 @@
+// src/api/proposalsService.js
+import apiClient from './client'
+
+export const listProposals = (params = {}) =>
+  apiClient.get('/proposals/submissions/', { params }).then((res) => res.data)
+
+export const getProposal = (id) =>
+  apiClient.get(`/proposals/submissions/${id}/`).then((res) => res.data)
+
+export const createProposal = (payload) =>
+  apiClient.post('/proposals/submissions/', payload).then((res) => res.data)
+
+export const updateProposal = (id, payload) =>
+  apiClient.patch(`/proposals/submissions/${id}/`, payload).then((res) => res.data)
+
+export const deleteProposal = (id) =>
+  apiClient.delete(`/proposals/submissions/${id}/`).then((res) => res.data)
+
+export const submitProposal = (id) =>
+  apiClient.post(`/proposals/submissions/${id}/submit/`).then((res) => res.data)
+
+export const approveProposal = (id) =>
+  apiClient.post(`/proposals/submissions/${id}/approve/`).then((res) => res.data)
+
+export const rejectProposal = (id, payload) =>
+  apiClient.post(`/proposals/submissions/${id}/reject/`, payload).then((res) => res.data)
+
+export const requestRevision = (id, payload) =>
+  apiClient
+    .post(`/proposals/submissions/${id}/request_revision/`, payload)
+    .then((res) => res.data)

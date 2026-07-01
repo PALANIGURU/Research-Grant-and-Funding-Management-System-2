@@ -6,3 +6,4 @@ INFO 2026-06-30 16:19:16,166 middleware 40648 48392 POST /api/auth/register/ 400
 INFO 2026-06-30 16:19:16,893 middleware 40648 48392 POST /api/auth/register/ 201 0.725s [anonymous]
 INFO 2026-06-30 16:19:37,848 middleware 40648 48392 POST /api/auth/register/ 201 0.744s [anonymous]
 INFO 2026-06-30 16:19:38,563 middleware 40648 48392 GET /api/auth/users/stats/ 200 0.002s [anonymous]
+INFO 2026-07-01 12:36:04,166 middleware 952 56872 POST /api/auth/login/ 401 0.453s [anonymous]

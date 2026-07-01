@@ -1,4 +1,4 @@
--"""
+"""
 Models for the notifications app.
 """
 from django.db import models

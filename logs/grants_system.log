@@ -44,3 +44,4 @@ INFO 2026-06-30 16:19:36,399 services 40648 48392 Notification sent to user1@exa
 INFO 2026-06-30 16:19:37,103 signals 40648 48392 New user registered: admin@example.com (role: ADMIN)
 INFO 2026-06-30 16:19:37,847 signals 40648 48392 New user registered: newguy@example.com (role: RESEARCHER)
 INFO 2026-06-30 16:19:38,559 signals 40648 48392 New user registered: admin@example.com (role: ADMIN)
+INFO 2026-07-01 13:50:17,430 signals 46492 37580 New user registered: 12@gmail.com (role: ADMIN)
