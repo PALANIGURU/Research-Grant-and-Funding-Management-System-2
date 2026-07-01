@@ -29,3 +29,14 @@ export const requestRevision = (id, payload) =>
   apiClient
     .post(`/proposals/submissions/${id}/request_revision/`, payload)
     .then((res) => res.data)
+export const startReview = (id) =>
+  apiClient.post(`/proposals/submissions/${id}/start_review/`).then((res) => res.data)
+
+export const resubmitProposal = (id) =>
+  apiClient.post(`/proposals/submissions/${id}/resubmit/`).then((res) => res.data)
+
+export const getProposalReviews = (id) =>
+  apiClient.get(`/proposals/submissions/${id}/reviews/`).then((res) => res.data)
+
+export const addProposalReview = (id, payload) =>
+  apiClient.post(`/proposals/submissions/${id}/reviews/`, payload).then((res) => res.data)
