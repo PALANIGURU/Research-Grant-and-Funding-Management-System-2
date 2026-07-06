@@ -9,7 +9,7 @@ const team = [
     bio: 'Former research administrator focused on simplifying grant compliance workflows.',
   },
   {
-    name: 'BAHRATH S',
+    name: 'BHARATH S',
     role: 'Engineering Lead',
     initials: 'RM',
     bio: 'Leads backend architecture, security, and API design for the platform.',
@@ -38,7 +38,7 @@ export default function Team() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="max-w-2xl">
-        <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full mb-4">
+        <span className="inline-block text-xs font-semibold text-ocean-800 bg-ocean-50 px-3 py-1 rounded-full mb-4">
           Our Team
         </span>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">
@@ -56,15 +56,15 @@ export default function Team() {
             key={member.name}
             className="border border-slate-200 rounded-xl p-6 text-center hover:shadow-md transition"
           >
-            <div className="h-16 w-16 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center text-lg font-semibold mb-4">
+            <div className="h-16 w-16 mx-auto rounded-full bg-ocean-700 text-white flex items-center justify-center text-lg font-semibold mb-4">
               {member.initials}
             </div>
             <h3 className="font-semibold text-slate-800">{member.name}</h3>
-            <p className="text-xs text-blue-600 font-medium mb-2">{member.role}</p>
+            <p className="text-xs text-ocean-700 font-medium mb-2">{member.role}</p>
             <p className="text-sm text-slate-500">{member.bio}</p>
             <div className="flex items-center justify-center gap-3 mt-4">
-              <Link2 className="h-4 w-4 text-slate-400 hover:text-blue-600 cursor-pointer" />
-              <Mail className="h-4 w-4 text-slate-400 hover:text-blue-600 cursor-pointer" />
+              <Link2 className="h-4 w-4 text-slate-400 hover:text-ocean-700 cursor-pointer" />
+              <Mail className="h-4 w-4 text-slate-400 hover:text-ocean-700 cursor-pointer" />
             </div>
           </div>
         ))}

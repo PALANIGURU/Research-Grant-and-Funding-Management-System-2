@@ -19,14 +19,14 @@ export default function PublicNavbar() {
 
   const linkClass = ({ isActive }) =>
     `text-sm font-medium px-3 py-2 rounded-md transition ${
-      isActive ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'
+      isActive ? 'text-ocean-700' : 'text-slate-600 hover:text-slate-900'
     }`
 
   return (
     <header className="border-b border-slate-200 sticky top-0 bg-white/90 backdrop-blur z-50">
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
+          <div className="h-8 w-8 rounded-lg bg-ocean-700 flex items-center justify-center">
             <GraduationCap className="h-5 w-5 text-white" />
           </div>
           <span className="font-bold text-slate-800">RGFMS</span>
@@ -45,7 +45,7 @@ export default function PublicNavbar() {
           {user ? (
             <Link
               to="/dashboard"
-              className="text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
+              className="text-sm font-medium bg-ocean-700 hover:bg-ocean-800 text-white px-4 py-2 rounded-lg transition"
             >
               Dashboard
             </Link>
@@ -59,7 +59,7 @@ export default function PublicNavbar() {
               </Link>
               <Link
                 to="/register"
-                className="text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
+                className="text-sm font-medium bg-ocean-700 hover:bg-ocean-800 text-white px-4 py-2 rounded-lg transition"
               >
                 Get started
               </Link>
@@ -96,7 +96,7 @@ export default function PublicNavbar() {
               <Link
                 to="/dashboard"
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium bg-blue-600 text-white px-4 py-2 rounded-lg text-center"
+                className="text-sm font-medium bg-ocean-700 text-white px-4 py-2 rounded-lg text-center"
               >
                 Dashboard
               </Link>
@@ -112,7 +112,7 @@ export default function PublicNavbar() {
                 <Link
                   to="/register"
                   onClick={() => setOpen(false)}
-                  className="text-sm font-medium bg-blue-600 text-white px-4 py-2 rounded-lg text-center"
+                  className="text-sm font-medium bg-ocean-700 text-white px-4 py-2 rounded-lg text-center"
                 >
                   Get started
                 </Link>

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserPlus, Loader2 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
-import { ROLE_OPTIONS } from '../../utils/roles'
+import { getErrorMessage, getFieldErrors } from '../../utils/errors'
 
 const initialForm = {
   email: '',
@@ -11,7 +11,6 @@ const initialForm = {
   last_name: '',
   password: '',
   password_confirm: '',
-  role: 'RESEARCHER',
   phone: '',
   department: '',
   institution: '',
@@ -41,11 +40,11 @@ export default function Register() {
       setSuccess(true)
       setTimeout(() => navigate('/login'), 1500)
     } catch (err) {
-      const data = err.response?.data
-      if (data && typeof data === 'object') {
-        setFieldErrors(data)
+      const fields = getFieldErrors(err)
+      if (Object.keys(fields).length > 0) {
+        setFieldErrors(fields)
       } else {
-        setGeneralError('Registration failed. Please try again.')
+        setGeneralError(getErrorMessage(err, 'Registration failed. Please try again.'))
       }
     } finally {
       setSubmitting(false)
@@ -58,12 +57,12 @@ export default function Register() {
     ) : null
 
   const inputClass =
-    'w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm'
+    'w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-600 text-sm'
   const labelClass = 'block text-sm font-medium text-slate-700 mb-1'
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-ocean-50 px-4">
         <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8 border border-slate-200 text-center">
           <h1 className="text-xl font-bold text-green-600 mb-2">
             Account created!
@@ -75,13 +74,13 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-ocean-50 px-4 py-10">
       <div className="w-full max-w-lg bg-white rounded-xl shadow-md p-8 border border-slate-200">
-        <h1 className="text-2xl font-bold text-slate-800 mb-1">Create an account</h1>
+    <h1 className="text-2xl font-bold text-slate-800 mb-1">Create a client account</h1>
         <p className="text-slate-500 mb-6 text-sm">
-          Register for the Research Grant & Funding Management System
+          Register to submit and track your grant applications. Staff accounts
+          are created internally by an administrator.
         </p>
-
         {generalError && (
           <div className="mb-4 rounded-md bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2">
             {generalError}
@@ -155,22 +154,7 @@ export default function Register() {
             </div>
           </div>
 
-          <div>
-            <label className={labelClass}>Role</label>
-            <select
-              name="role"
-              value={form.role}
-              onChange={handleChange}
-              className={inputClass}
-            >
-              {ROLE_OPTIONS.map((r) => (
-                <option key={r.value} value={r.value}>
-                  {r.label}
-                </option>
-              ))}
-            </select>
-            {errorFor('role')}
-          </div>
+ 
 
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -210,7 +194,7 @@ export default function Register() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-medium py-2.5 rounded-lg text-sm transition"
+            className="w-full flex items-center justify-center gap-2 bg-ocean-700 hover:bg-ocean-800 disabled:bg-ocean-300 text-white font-medium py-2.5 rounded-lg text-sm transition"
           >
             {submitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -223,7 +207,7 @@ export default function Register() {
 
         <p className="text-sm text-slate-500 mt-6 text-center">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-600 font-medium hover:underline">
+          <Link to="/login" className="text-ocean-700 font-medium hover:underline">
             Sign in
           </Link>
         </p>

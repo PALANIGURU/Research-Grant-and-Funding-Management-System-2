@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.db.models import Avg
 from core.exceptions import BusinessLogicError
 from .models import Proposal, ProposalStatus
+from notifications.services import NotificationService
 
 logger = logging.getLogger('grants_system')
 
@@ -16,7 +17,9 @@ class ProposalService:
     @staticmethod
     def submit_proposal(proposal, user):
         """Submit a proposal opportunity."""
-        if proposal.submitted_by != user:
+        is_owner = proposal.submitted_by == user
+        is_staff_override = user.role in ('ADMIN', 'GRANT_MANAGER')
+        if not is_owner and not is_staff_override:
             raise BusinessLogicError("You can only submit your own proposals.")
 
         if proposal.status not in [ProposalStatus.DRAFT, ProposalStatus.REVISION_REQUESTED]:
@@ -34,6 +37,7 @@ class ProposalService:
         proposal.save(update_fields=['status', 'submitted_at'])
         
         logger.info(f"Proposal {proposal.reference_number} submitted by {user.email}")
+        NotificationService.notify_proposal_submitted(proposal)
         return proposal
 
     @staticmethod
@@ -82,6 +86,16 @@ class ProposalService:
             f"Proposal {proposal.reference_number} transitioned from {old_status} "
             f"to {new_status} by user {user.email}"
         )
+
+        if new_status == ProposalStatus.UNDER_REVIEW:
+            NotificationService.notify_proposal_under_review(proposal)
+        elif new_status == ProposalStatus.APPROVED:
+            NotificationService.notify_proposal_approved(proposal)
+        elif new_status == ProposalStatus.REJECTED:
+            NotificationService.notify_proposal_rejected(proposal)
+        elif new_status == ProposalStatus.REVISION_REQUESTED:
+            NotificationService.notify_proposal_revision_requested(proposal)
+
         return proposal
 
     @staticmethod

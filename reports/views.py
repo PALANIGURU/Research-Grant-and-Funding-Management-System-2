@@ -25,7 +25,7 @@ from .serializers import (
 )
 from .filters import MilestoneFilter, ProgressReportFilter, FinalReportFilter
 from .services import ReportService
-
+from notifications.services import NotificationService
 
 class MilestoneViewSet(viewsets.ModelViewSet):
     queryset = Milestone.objects.all()
@@ -122,6 +122,7 @@ class ProgressReportViewSet(viewsets.ModelViewSet):
         report.reviewed_by = request.user
         report.review_comments = comments
         report.save(update_fields=['status', 'reviewed_by', 'review_comments'])
+        NotificationService.notify_report_reviewed(report)
         return Response({'success': True, 'data': ProgressReportDetailSerializer(report).data})
 
 
@@ -181,4 +182,5 @@ class FinalReportViewSet(viewsets.ModelViewSet):
         report.reviewed_by = request.user
         report.review_comments = comments
         report.save(update_fields=['status', 'reviewed_by', 'review_comments'])
+        NotificationService.notify_report_reviewed(report)
         return Response({'success': True, 'data': FinalReportSerializer(report).data})

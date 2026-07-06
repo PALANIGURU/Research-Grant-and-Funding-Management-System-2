@@ -1,4 +1,4 @@
-﻿// src/pages/public/Careers.jsx
+// src/pages/public/Careers.jsx
 import { useState } from 'react'
 import { MapPin, Clock, ChevronDown, ChevronUp } from 'lucide-react'
 
@@ -36,7 +36,7 @@ export default function Careers() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="max-w-2xl">
-        <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full mb-4">
+        <span className="inline-block text-xs font-semibold text-ocean-800 bg-ocean-50 px-3 py-1 rounded-full mb-4">
           Careers
         </span>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">
@@ -55,7 +55,7 @@ export default function Careers() {
           >
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition"
+              className="w-full flex items-center justify-between p-5 text-left hover:bg-ocean-50 transition"
             >
               <div>
                 <h3 className="font-semibold text-slate-800">{job.title}</h3>
@@ -78,7 +78,7 @@ export default function Careers() {
               <div className="px-5 pb-5 text-sm text-slate-500 border-t border-slate-100 pt-4">
                 {job.desc}
                 <div className="mt-4">
-                  <a href="/contact" className="inline-block text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
+                  <a href="/contact" className="inline-block text-sm font-medium bg-ocean-700 hover:bg-ocean-800 text-white px-4 py-2 rounded-lg transition">
                     Apply via Contact page
                   </a>
                 </div>
@@ -95,7 +95,7 @@ export default function Careers() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {process.map((p) => (
             <div key={p.step} className="border border-slate-200 rounded-xl p-6">
-              <div className="h-8 w-8 rounded-full bg-blue-600 text-white text-sm font-semibold flex items-center justify-center mb-4">
+              <div className="h-8 w-8 rounded-full bg-ocean-700 text-white text-sm font-semibold flex items-center justify-center mb-4">
                 {p.step}
               </div>
               <h3 className="font-semibold text-slate-800 mb-1">{p.title}</h3>

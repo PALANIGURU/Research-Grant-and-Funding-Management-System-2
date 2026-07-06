@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createBudget } from '../../../api/budgetsService'
 import { listGrants } from '../../../api/grantsService'
+import { getErrorMessage } from '../../../utils/errors'
 
 export default function BudgetForm() {
   const navigate = useNavigate()
@@ -40,10 +41,7 @@ export default function BudgetForm() {
       })
       navigate('/dashboard/budgets')
     } catch (err) {
-      const data = err.response?.data
-      setError(
-        data ? Object.values(data).flat().join(' ') : 'Failed to create budget. Check the fields.'
-      )
+      setError(getErrorMessage(err, 'Failed to create budget. Check the fields.'))
     } finally {
       setSaving(false)
     }
@@ -70,7 +68,7 @@ export default function BudgetForm() {
             value={form.grant}
             onChange={handleChange}
             required
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           >
             <option value="">Select an awarded grant</option>
             {grants.map((g) => (
@@ -96,7 +94,7 @@ export default function BudgetForm() {
             required
             min="0"
             step="0.01"
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
 
@@ -107,7 +105,7 @@ export default function BudgetForm() {
             value={form.notes}
             onChange={handleChange}
             rows={3}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
 
@@ -122,7 +120,7 @@ export default function BudgetForm() {
           <button
             type="submit"
             disabled={saving}
-            className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+            className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
           >
             {saving ? 'Saving...' : 'Create Budget'}
           </button>

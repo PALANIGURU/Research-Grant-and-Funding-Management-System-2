@@ -40,3 +40,19 @@ export const getProposalReviews = (id) =>
 
 export const addProposalReview = (id, payload) =>
   apiClient.post(`/proposals/submissions/${id}/reviews/`, payload).then((res) => res.data)
+export const listAttachments = (proposalId) =>
+  apiClient
+    .get(`/proposals/submissions/${proposalId}/attachments/`)
+    .then((res) => res.data)
+
+export const uploadAttachment = (proposalId, file, documentType = 'OTHER', description = '') => {
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('document_type', documentType)
+  if (description) formData.append('description', description)
+  return apiClient
+    .post(`/proposals/submissions/${proposalId}/attachments/`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    .then((res) => res.data)
+}

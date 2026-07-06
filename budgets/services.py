@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.db.models import Sum
 from core.exceptions import BusinessLogicError
 from .models import Budget, BudgetItem, Disbursement, DisbursementStatus, Expense, BudgetStatus
+from notifications.services import NotificationService
 
 logger = logging.getLogger('grants_system')
 
@@ -94,6 +95,7 @@ class BudgetService:
         logger.info(
             f"Disbursement {disbursement.reference_number} approved by {user.email}"
         )
+        NotificationService.notify_disbursement_approved(disbursement)
         return disbursement
 
     @staticmethod

@@ -10,12 +10,15 @@ from .models import Proposal, ProposalReview, ProposalAttachment
 
 class ProposalAttachmentSerializer(serializers.ModelSerializer):
     uploaded_by = UserListSerializer(read_only=True)
+    document_type_display = serializers.CharField(source='get_document_type_display', read_only=True)
 
     class Meta:
         model = ProposalAttachment
-        fields = ['id', 'file', 'file_name', 'file_size', 'uploaded_by', 'description', 'created_at']
+        fields = [
+            'id', 'file', 'file_name', 'file_size', 'document_type',
+            'document_type_display', 'uploaded_by', 'description', 'created_at',
+        ]
         read_only_fields = ['id', 'file_size', 'uploaded_by', 'created_at']
-
 
 class ProposalReviewSerializer(serializers.ModelSerializer):
     reviewer_name = serializers.SerializerMethodField()

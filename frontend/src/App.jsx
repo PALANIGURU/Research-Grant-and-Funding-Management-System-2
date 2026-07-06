@@ -6,6 +6,10 @@ import DashboardLayout from './components/layout/DashboardLayout'
 
 import Landing from './pages/Landing'
 import Login from './pages/auth/Login'
+import ClientLogin from './pages/auth/ClientLogin'
+import AdminLogin from './pages/auth/AdminLogin'
+import StaffLogin from './pages/auth/StaffLogin'
+import SuperAdminLogin from './pages/auth/SuperAdminLogin'
 import Register from './pages/auth/Register'
 
 import About from './pages/public/About'
@@ -15,8 +19,9 @@ import Careers from './pages/public/Careers'
 import Contact from './pages/public/Contact'
 import PrivacyPolicy from './pages/public/PrivacyPolicy'
 import TermsAndConditions from './pages/public/TermsAndConditions'
-
+import ContactMessagesList from './pages/dashboard/contact/ContactMessagesList'
 import Overview from './pages/dashboard/Overview'
+import AnalyticsDashboard from './pages/dashboard/analytics/AnalyticsDashboard'
 import GrantsList from './pages/dashboard/grants/GrantsList'
 import GrantForm from './pages/dashboard/grants/GrantForm'
 import GrantDetail from './pages/dashboard/grants/GrantDetail'
@@ -26,7 +31,11 @@ import ProposalDetail from './pages/dashboard/proposals/ProposalDetail'
 import BudgetsList from './pages/dashboard/budgets/BudgetsList'
 import BudgetForm from './pages/dashboard/budgets/BudgetForm'
 import BudgetDetail from './pages/dashboard/budgets/BudgetDetail'
-
+import ReportsHub from './pages/dashboard/reports/ReportsHub'
+import NotificationsList from './pages/dashboard/notifications/NotificationsList'
+import UsersList from './pages/dashboard/users/UsersList'
+import AuditLogsList from './pages/dashboard/audit/AuditLogsList'
+import { ROLES } from './utils/roles'
 function App() {
   return (
     <Routes>
@@ -41,6 +50,10 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/login/client" element={<ClientLogin />} />
+        <Route path="/login/admin" element={<AdminLogin />} />
+        <Route path="/login/staff" element={<StaffLogin />} />
+        <Route path="/login/super-admin" element={<SuperAdminLogin />} />
         <Route path="/register" element={<Register />} />
       </Route>
 
@@ -68,8 +81,41 @@ function App() {
         <Route path="budgets" element={<BudgetsList />} />
         <Route path="budgets/new" element={<BudgetForm />} />
         <Route path="budgets/:id" element={<BudgetDetail />} />
-        {/* More nested routes (reports, notifications, users, audit) will be added next */}
-      </Route>
+        <Route path="reports" element={<ReportsHub />} />
+        <Route path="notifications" element={<NotificationsList />} />
+        <Route
+          path="analytics"
+          element={
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.GRANT_MANAGER, ROLES.FINANCE_OFFICER, ROLES.REVIEWER, ROLES.RESEARCHER]}>
+              <AnalyticsDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="users"
+          element={
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
+              <UsersList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="audit"
+          element={
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
+              <AuditLogsList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="contact-messages"
+          element={
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
+              <ContactMessagesList />
+            </ProtectedRoute>
+          }
+        />
+        </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

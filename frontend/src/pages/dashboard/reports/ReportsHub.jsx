@@ -1,4 +1,4 @@
-﻿// src/pages/dashboard/reports/ReportsHub.jsx
+// src/pages/dashboard/reports/ReportsHub.jsx
 import { useEffect, useState } from 'react'
 import { Plus, CheckCircle } from 'lucide-react'
 import {
@@ -59,7 +59,7 @@ export default function ReportsHub() {
             onClick={() => setTab(t.key)}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 transition ${
               tab === t.key
-                ? 'border-blue-600 text-blue-700'
+                ? 'border-ocean-700 text-ocean-800'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
@@ -128,7 +128,7 @@ function MilestonesTab({ grants, isManager }) {
         <div className="flex justify-end">
           <button
             onClick={() => setShowForm((v) => !v)}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
+            className="inline-flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
           >
             <Plus className="h-4 w-4" />
             New Milestone
@@ -149,7 +149,7 @@ function MilestonesTab({ grants, isManager }) {
               required
               value={form.grant}
               onChange={(e) => setForm({ ...form, grant: e.target.value })}
-              className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             >
               <option value="">Select grant</option>
               {grants.map((g) => (
@@ -163,7 +163,7 @@ function MilestonesTab({ grants, isManager }) {
               type="date"
               value={form.due_date}
               onChange={(e) => setForm({ ...form, due_date: e.target.value })}
-              className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
           </div>
           <input
@@ -171,7 +171,7 @@ function MilestonesTab({ grants, isManager }) {
             placeholder="Title"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
           <textarea
             required
@@ -179,17 +179,17 @@ function MilestonesTab({ grants, isManager }) {
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
             rows={2}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
           <input
             placeholder="Deliverables"
             value={form.deliverables}
             onChange={(e) => setForm({ ...form, deliverables: e.target.value })}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
           <button
             type="submit"
-            className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+            className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800"
           >
             Create Milestone
           </button>
@@ -198,7 +198,7 @@ function MilestonesTab({ grants, isManager }) {
 
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500 text-xs uppercase">
+          <thead className="bg-ocean-50 text-slate-500 text-xs uppercase">
             <tr>
               <th className="text-left px-4 py-3">Title</th>
               <th className="text-left px-4 py-3">Due Date</th>
@@ -218,7 +218,7 @@ function MilestonesTab({ grants, isManager }) {
               </tr>
             ) : (
               items.map((m) => (
-                <tr key={m.id} className="hover:bg-slate-50">
+                <tr key={m.id} className="hover:bg-ocean-50">
                   <td className="px-4 py-3 font-medium text-slate-700">{m.title}</td>
                   <td className="px-4 py-3 text-slate-600">{m.due_date}</td>
                   <td className="px-4 py-3 text-slate-600">{m.completion_percentage}%</td>
@@ -318,7 +318,7 @@ function ProgressReportsTab({ grants, isManager }) {
       <div className="flex justify-end">
         <button
           onClick={() => setShowForm((v) => !v)}
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
+          className="inline-flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
         >
           <Plus className="h-4 w-4" />
           New Progress Report
@@ -337,7 +337,7 @@ function ProgressReportsTab({ grants, isManager }) {
             required
             value={form.grant}
             onChange={(e) => setForm({ ...form, grant: e.target.value })}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           >
             <option value="">Select grant</option>
             {grants.map((g) => (
@@ -345,15 +345,15 @@ function ProgressReportsTab({ grants, isManager }) {
             ))}
           </select>
           <div className="grid grid-cols-2 gap-3">
-            <input required type="date" value={form.period_start} onChange={(e) => setForm({ ...form, period_start: e.target.value })} className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <input required type="date" value={form.period_end} onChange={(e) => setForm({ ...form, period_end: e.target.value })} className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input required type="date" value={form.period_start} onChange={(e) => setForm({ ...form, period_start: e.target.value })} className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+            <input required type="date" value={form.period_end} onChange={(e) => setForm({ ...form, period_end: e.target.value })} className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
           </div>
-          <textarea required placeholder="Summary" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea required placeholder="Activities completed" value={form.activities_completed} onChange={(e) => setForm({ ...form, activities_completed: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea placeholder="Challenges" value={form.challenges} onChange={(e) => setForm({ ...form, challenges: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea placeholder="Next steps" value={form.next_steps} onChange={(e) => setForm({ ...form, next_steps: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <input type="number" min="0" step="0.01" placeholder="Expenditure so far ($)" value={form.expenditure_summary} onChange={(e) => setForm({ ...form, expenditure_summary: e.target.value })} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button type="submit" className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+          <textarea required placeholder="Summary" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea required placeholder="Activities completed" value={form.activities_completed} onChange={(e) => setForm({ ...form, activities_completed: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea placeholder="Challenges" value={form.challenges} onChange={(e) => setForm({ ...form, challenges: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea placeholder="Next steps" value={form.next_steps} onChange={(e) => setForm({ ...form, next_steps: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <input type="number" min="0" step="0.01" placeholder="Expenditure so far ($)" value={form.expenditure_summary} onChange={(e) => setForm({ ...form, expenditure_summary: e.target.value })} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <button type="submit" className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800">
             Save Draft
           </button>
         </form>
@@ -361,7 +361,7 @@ function ProgressReportsTab({ grants, isManager }) {
 
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500 text-xs uppercase">
+          <thead className="bg-ocean-50 text-slate-500 text-xs uppercase">
             <tr>
               <th className="text-left px-4 py-3">Report #</th>
               <th className="text-left px-4 py-3">Grant</th>
@@ -377,14 +377,14 @@ function ProgressReportsTab({ grants, isManager }) {
               <tr><td colSpan={5} className="px-4 py-8 text-center text-slate-400">No progress reports found.</td></tr>
             ) : (
               items.map((r) => (
-                <tr key={r.id} className="hover:bg-slate-50">
+                <tr key={r.id} className="hover:bg-ocean-50">
                   <td className="px-4 py-3 font-medium text-slate-700">{r.report_number}</td>
                   <td className="px-4 py-3 text-slate-600">{r.grant_title}</td>
-                  <td className="px-4 py-3 text-slate-600">{r.period_start} — {r.period_end}</td>
+                  <td className="px-4 py-3 text-slate-600">{r.period_start} � {r.period_end}</td>
                   <td className="px-4 py-3"><StatusBadge status={r.status} /></td>
                   <td className="px-4 py-3 space-x-2">
                     {r.status === 'DRAFT' && (
-                      <button onClick={() => handleSubmitReport(r.id)} className="text-xs text-blue-700 hover:underline">Submit</button>
+                      <button onClick={() => handleSubmitReport(r.id)} className="text-xs text-ocean-800 hover:underline">Submit</button>
                     )}
                     {isManager && r.status === 'SUBMITTED' && (
                       <>
@@ -476,7 +476,7 @@ function FinalReportsTab({ grants, isManager }) {
       <div className="flex justify-end">
         <button
           onClick={() => setShowForm((v) => !v)}
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
+          className="inline-flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
         >
           <Plus className="h-4 w-4" />
           New Final Report
@@ -491,21 +491,21 @@ function FinalReportsTab({ grants, isManager }) {
 
       {showForm && (
         <form onSubmit={handleCreate} className="bg-white border border-slate-200 rounded-xl p-5 space-y-3">
-          <select required value={form.grant} onChange={(e) => setForm({ ...form, grant: e.target.value })} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <select required value={form.grant} onChange={(e) => setForm({ ...form, grant: e.target.value })} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600">
             <option value="">Select grant</option>
             {grants.map((g) => (
               <option key={g.id} value={g.id}>{g.title}</option>
             ))}
           </select>
-          <textarea required placeholder="Summary" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea required placeholder="Objectives achieved" value={form.objectives_achieved} onChange={(e) => setForm({ ...form, objectives_achieved: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea required placeholder="Outcomes" value={form.outcomes} onChange={(e) => setForm({ ...form, outcomes: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea placeholder="Publications" value={form.publications} onChange={(e) => setForm({ ...form, publications: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea required placeholder="Financial summary" value={form.financial_summary} onChange={(e) => setForm({ ...form, financial_summary: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <input required type="number" min="0" step="0.01" placeholder="Total expenditure ($)" value={form.total_expenditure} onChange={(e) => setForm({ ...form, total_expenditure: e.target.value })} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea placeholder="Lessons learned" value={form.lessons_learned} onChange={(e) => setForm({ ...form, lessons_learned: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea placeholder="Recommendations" value={form.recommendations} onChange={(e) => setForm({ ...form, recommendations: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button type="submit" className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+          <textarea required placeholder="Summary" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea required placeholder="Objectives achieved" value={form.objectives_achieved} onChange={(e) => setForm({ ...form, objectives_achieved: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea required placeholder="Outcomes" value={form.outcomes} onChange={(e) => setForm({ ...form, outcomes: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea placeholder="Publications" value={form.publications} onChange={(e) => setForm({ ...form, publications: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea required placeholder="Financial summary" value={form.financial_summary} onChange={(e) => setForm({ ...form, financial_summary: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <input required type="number" min="0" step="0.01" placeholder="Total expenditure ($)" value={form.total_expenditure} onChange={(e) => setForm({ ...form, total_expenditure: e.target.value })} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea placeholder="Lessons learned" value={form.lessons_learned} onChange={(e) => setForm({ ...form, lessons_learned: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <textarea placeholder="Recommendations" value={form.recommendations} onChange={(e) => setForm({ ...form, recommendations: e.target.value })} rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600" />
+          <button type="submit" className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800">
             Save Draft
           </button>
         </form>
@@ -513,7 +513,7 @@ function FinalReportsTab({ grants, isManager }) {
 
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500 text-xs uppercase">
+          <thead className="bg-ocean-50 text-slate-500 text-xs uppercase">
             <tr>
               <th className="text-left px-4 py-3">Report #</th>
               <th className="text-left px-4 py-3">Grant</th>
@@ -529,14 +529,14 @@ function FinalReportsTab({ grants, isManager }) {
               <tr><td colSpan={5} className="px-4 py-8 text-center text-slate-400">No final reports found.</td></tr>
             ) : (
               items.map((r) => (
-                <tr key={r.id} className="hover:bg-slate-50">
+                <tr key={r.id} className="hover:bg-ocean-50">
                   <td className="px-4 py-3 font-medium text-slate-700">{r.report_number}</td>
                   <td className="px-4 py-3 text-slate-600">{r.grant?.title}</td>
                   <td className="px-4 py-3 text-slate-600">${Number(r.total_expenditure).toLocaleString()}</td>
                   <td className="px-4 py-3"><StatusBadge status={r.status} /></td>
                   <td className="px-4 py-3 space-x-2">
                     {r.status === 'DRAFT' && (
-                      <button onClick={() => handleSubmitReport(r.id)} className="text-xs text-blue-700 hover:underline">Submit</button>
+                      <button onClick={() => handleSubmitReport(r.id)} className="text-xs text-ocean-800 hover:underline">Submit</button>
                     )}
                     {isManager && r.status === 'SUBMITTED' && (
                       <>

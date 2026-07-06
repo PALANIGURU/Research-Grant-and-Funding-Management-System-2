@@ -14,6 +14,7 @@ class UserRole(models.TextChoices):
     REVIEWER = 'REVIEWER', 'Reviewer'
     RESEARCHER = 'RESEARCHER', 'Researcher / Principal Investigator'
     FINANCE_OFFICER = 'FINANCE_OFFICER', 'Finance Officer'
+    CLIENT = 'CLIENT', 'Client'
 
 
 class CustomUserManager(BaseUserManager):

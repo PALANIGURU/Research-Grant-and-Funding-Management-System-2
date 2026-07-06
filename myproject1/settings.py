@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_spectacular',
 
-    # Project apps
+   # Project apps
     'accounts',
     'grants',
     'proposals',
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'reports',
     'notifications',
     'audit',
+    'contact_messages',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +147,25 @@ STATIC_URL = 'static/'
 # Media files (uploads)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# ---------- Email ----------
+# Development: prints emails to the console instead of actually sending them.
+# This lets you see exactly what would be emailed without needing real SMTP
+# credentials while building/testing.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'RGFMS <noreply@rgfms.example>'
+# Base URL of the frontend app, used to build clickable links inside emails.
+FRONTEND_URL = 'http://localhost:5173'
+# Production: comment out the console backend above and uncomment/configure
+# this block with real SMTP credentials (e.g. Gmail App Password, SendGrid,
+# Mailgun, etc.) when you're ready to send real emails.
+#
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your-email@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your-app-password'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

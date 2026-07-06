@@ -28,7 +28,7 @@ export default function About() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="max-w-2xl">
-        <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full mb-4">
+        <span className="inline-block text-xs font-semibold text-ocean-800 bg-ocean-50 px-3 py-1 rounded-full mb-4">
           About Us
         </span>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">
@@ -48,8 +48,8 @@ export default function About() {
             key={title}
             className="border border-slate-200 rounded-xl p-6 hover:shadow-md transition"
           >
-            <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
-              <Icon className="h-5 w-5 text-blue-600" />
+            <div className="h-10 w-10 rounded-lg bg-ocean-50 flex items-center justify-center mb-4">
+              <Icon className="h-5 w-5 text-ocean-700" />
             </div>
             <h3 className="font-semibold text-slate-800 mb-2">{title}</h3>
             <p className="text-sm text-slate-500">{desc}</p>
@@ -59,15 +59,15 @@ export default function About() {
 
       <div className="mt-16 border-t border-slate-200 pt-10 grid sm:grid-cols-3 gap-8 text-center">
         <div>
-          <p className="text-3xl font-bold text-blue-600">5</p>
+          <p className="text-3xl font-bold text-ocean-700">5</p>
           <p className="text-sm text-slate-500 mt-1">User roles supported</p>
         </div>
         <div>
-          <p className="text-3xl font-bold text-blue-600">End-to-end</p>
+          <p className="text-3xl font-bold text-ocean-700">End-to-end</p>
           <p className="text-sm text-slate-500 mt-1">Grant lifecycle coverage</p>
         </div>
         <div>
-          <p className="text-3xl font-bold text-blue-600">Secure</p>
+          <p className="text-3xl font-bold text-ocean-700">Secure</p>
           <p className="text-sm text-slate-500 mt-1">JWT-based access control</p>
         </div>
       </div>

@@ -1,10 +1,10 @@
 // src/components/common/StatusBadge.jsx
 const COLOR_MAP = {
-  DRAFT: 'bg-slate-100 text-slate-600',
+  DRAFT: 'bg-ocean-100 text-ocean-700',
   OPEN: 'bg-green-100 text-green-700',
-  CLOSED: 'bg-slate-100 text-slate-600',
-  AWARDED: 'bg-blue-100 text-blue-700',
-  COMPLETED: 'bg-blue-100 text-blue-700',
+  CLOSED: 'bg-ocean-100 text-ocean-700',
+  AWARDED: 'bg-ocean-200 text-ocean-800',
+  COMPLETED: 'bg-ocean-200 text-ocean-800',
   CANCELLED: 'bg-red-100 text-red-700',
   SUBMITTED: 'bg-amber-100 text-amber-700',
   UNDER_REVIEW: 'bg-amber-100 text-amber-700',
@@ -14,10 +14,11 @@ const COLOR_MAP = {
   PENDING: 'bg-amber-100 text-amber-700',
   PAID: 'bg-green-100 text-green-700',
   FAILED: 'bg-red-100 text-red-700',
+  OVERDUE: 'bg-red-100 text-red-700',
 }
 
 export default function StatusBadge({ status }) {
-  const classes = COLOR_MAP[status] || 'bg-slate-100 text-slate-600'
+  const classes = COLOR_MAP[status] || 'bg-ocean-100 text-ocean-700'
   const label = status ? status.replace(/_/g, ' ') : 'UNKNOWN'
 
   return (

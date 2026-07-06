@@ -1,6 +1,7 @@
 // src/pages/dashboard/grants/GrantForm.jsx
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { getErrorMessage } from '../../../utils/errors'
 import {
   createGrant,
   getGrant,
@@ -108,10 +109,7 @@ export default function GrantForm() {
       }
       navigate('/dashboard/grants')
     } catch (err) {
-      const data = err.response?.data
-      setError(
-        data ? Object.values(data).flat().join(' ') : 'Failed to save grant. Check the fields.'
-      )
+      setError(getErrorMessage(err, 'Failed to save grant. Check the fields.'))
     } finally {
       setSaving(false)
     }
@@ -141,7 +139,7 @@ export default function GrantForm() {
             value={form.title}
             onChange={handleChange}
             required
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
 
@@ -153,7 +151,7 @@ export default function GrantForm() {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
 
@@ -165,7 +163,7 @@ export default function GrantForm() {
               value={form.funding_agency}
               onChange={handleChange}
               required
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             >
               <option value="">Select agency</option>
               {agencies.map((a) => (
@@ -182,7 +180,7 @@ export default function GrantForm() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             >
               <option value="">Select category</option>
               {categories.map((c) => (
@@ -205,7 +203,7 @@ export default function GrantForm() {
               required
               min="0"
               step="0.01"
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
           </div>
           <div>
@@ -216,7 +214,7 @@ export default function GrantForm() {
               value={form.application_deadline}
               onChange={handleChange}
               required
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
           </div>
         </div>
@@ -230,7 +228,7 @@ export default function GrantForm() {
               value={form.start_date}
               onChange={handleChange}
               required
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
           </div>
           <div>
@@ -241,7 +239,7 @@ export default function GrantForm() {
               value={form.end_date}
               onChange={handleChange}
               required
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
           </div>
         </div>
@@ -253,7 +251,7 @@ export default function GrantForm() {
             value={form.eligibility_criteria}
             onChange={handleChange}
             rows={3}
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
 
@@ -266,7 +264,7 @@ export default function GrantForm() {
             value={form.required_documents}
             onChange={handleChange}
             placeholder="Proposal PDF, Budget Sheet, CV"
-            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
 
@@ -281,7 +279,7 @@ export default function GrantForm() {
               value={form.max_proposals_per_researcher}
               onChange={handleChange}
               min="1"
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
           </div>
           <div>
@@ -290,7 +288,7 @@ export default function GrantForm() {
               name="status"
               value={form.status}
               onChange={handleChange}
-              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             >
               {STATUS_OPTIONS.map((s) => (
                 <option key={s} value={s}>
@@ -312,7 +310,7 @@ export default function GrantForm() {
           <button
             type="submit"
             disabled={saving}
-            className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+            className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
           >
             {saving ? 'Saving...' : isEdit ? 'Save Changes' : 'Create Grant'}
           </button>

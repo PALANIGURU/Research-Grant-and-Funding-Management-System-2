@@ -50,7 +50,7 @@ export default function BudgetsList() {
         {canCreate && (
           <Link
             to="/dashboard/budgets/new"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
+            className="inline-flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
           >
             <Plus className="h-4 w-4" />
             New Budget
@@ -66,7 +66,7 @@ export default function BudgetsList() {
 
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500 text-xs uppercase">
+          <thead className="bg-ocean-50 text-slate-500 text-xs uppercase">
             <tr>
               <th className="text-left px-4 py-3">Grant</th>
               <th className="text-left px-4 py-3">Allocated</th>
@@ -91,11 +91,11 @@ export default function BudgetsList() {
               </tr>
             ) : (
               budgets.map((b) => (
-                <tr key={b.id} className="hover:bg-slate-50">
+                <tr key={b.id} className="hover:bg-ocean-50">
                   <td className="px-4 py-3">
                     <Link
                       to={`/dashboard/budgets/${b.id}`}
-                      className="font-medium text-blue-700 hover:underline"
+                      className="font-medium text-ocean-800 hover:underline"
                     >
                       {b.grant_title}
                     </Link>
@@ -114,7 +114,7 @@ export default function BudgetsList() {
                     <div className="flex items-center gap-2">
                       <div className="w-20 h-2 bg-slate-100 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-blue-500"
+                          className="h-full bg-ocean-500"
                           style={{ width: `${Math.min(b.utilization_percentage, 100)}%` }}
                         />
                       </div>

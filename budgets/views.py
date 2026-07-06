@@ -26,7 +26,7 @@ from .serializers import (
 )
 from .filters import BudgetFilter, DisbursementFilter, ExpenseFilter
 from .services import BudgetService
-
+from notifications.services import NotificationService
 
 class BudgetViewSet(viewsets.ModelViewSet):
     queryset = Budget.objects.all()
@@ -191,6 +191,7 @@ class DisbursementViewSet(viewsets.ReadOnlyModelViewSet):
             )
         disbursement.status = DisbursementStatus.DISBURSED
         disbursement.save(update_fields=['status'])
+        NotificationService.notify_disbursement_disbursed(disbursement)
         return Response({'success': True, 'data': DisbursementSerializer(disbursement).data})
 
     @action(detail=True, methods=['post'])
@@ -205,4 +206,5 @@ class DisbursementViewSet(viewsets.ReadOnlyModelViewSet):
         disbursement.status = DisbursementStatus.REJECTED
         disbursement.rejection_reason = reason
         disbursement.save(update_fields=['status', 'rejection_reason'])
+        NotificationService.notify_disbursement_rejected(disbursement)
         return Response({'success': True, 'data': DisbursementSerializer(disbursement).data})

@@ -137,7 +137,7 @@ export default function GrantDetail() {
           {isResearcher && grant.is_open && (
             <Link
               to={`/dashboard/proposals/new?grant=${grant.id}`}
-              className="px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+              className="px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800"
             >
               Apply with a Proposal
             </Link>
@@ -146,7 +146,7 @@ export default function GrantDetail() {
             <>
               <Link
                 to={`/dashboard/grants/${grant.id}/edit`}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-slate-50"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-ocean-50"
               >
                 <Pencil className="h-4 w-4" />
                 Edit

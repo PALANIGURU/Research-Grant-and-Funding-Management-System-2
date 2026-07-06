@@ -112,6 +112,16 @@ class ProposalReview(TimeStampedModel):
         return f"Review for {self.proposal.reference_number} by {self.reviewer.email}"
 
 
+class DocumentType(models.TextChoices):
+    """Category of a proposal's supporting document."""
+    CV = 'CV', 'CV / Resume'
+    BUDGET_PLAN = 'BUDGET_PLAN', 'Budget Plan'
+    RESEARCH_PLAN = 'RESEARCH_PLAN', 'Research Plan'
+    ETHICS_APPROVAL = 'ETHICS_APPROVAL', 'Ethics Approval'
+    LETTER_OF_SUPPORT = 'LETTER_OF_SUPPORT', 'Letter of Support'
+    OTHER = 'OTHER', 'Other'
+
+
 class ProposalAttachment(TimeStampedModel):
     """Uploaded files attached to a proposal submission."""
     proposal = models.ForeignKey(
@@ -122,6 +132,11 @@ class ProposalAttachment(TimeStampedModel):
     file = models.FileField(upload_to='proposal_attachments/%Y/%m/')
     file_name = models.CharField(max_length=255)
     file_size = models.PositiveIntegerField(help_text='File size in bytes')
+    document_type = models.CharField(
+        max_length=20,
+        choices=DocumentType.choices,
+        default=DocumentType.OTHER,
+    )
     uploaded_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,

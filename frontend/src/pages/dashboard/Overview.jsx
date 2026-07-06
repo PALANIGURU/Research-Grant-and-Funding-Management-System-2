@@ -48,13 +48,28 @@ export default function Overview() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-slate-800">
-          Welcome back, {user?.first_name || 'there'} 👋
+      <div className="ocean-card">
+        <h1 className="ocean-card__title">
+          Welcome back, {user?.first_name || 'there'}
         </h1>
-        <p className="text-slate-500 mt-1">
-          You're signed in as {roleLabel(user?.role)}. Here's what's happening.
+        <p className="text-ocean-100 mb-8 max-w-lg">
+          You're signed in as {roleLabel(user?.role)}. Here's a snapshot of your
+          grants, proposals, budgets, and notifications.
         </p>
+
+        <div className="flex items-end justify-between flex-wrap gap-4">
+          <div className="ocean-card__meta">
+            <div className="ocean-card__meta-row">
+              <span className="ocean-card__meta-label">Role</span>
+              <span className="ocean-card__meta-value">{roleLabel(user?.role)}</span>
+            </div>
+            <div className="ocean-card__meta-row">
+              <span className="ocean-card__meta-label">Email</span>
+              <span className="ocean-card__meta-value">{user?.email}</span>
+            </div>
+          </div>
+          <span className="ocean-pill">RGFMS</span>
+        </div>
       </div>
 
       {error && (

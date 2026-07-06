@@ -16,6 +16,7 @@ from .serializers import (
     UserListSerializer,
     ChangePasswordSerializer,
     AdminUserSerializer,
+    AdminCreateUserSerializer,
 )
 from .permissions import IsAdmin
 
@@ -118,6 +119,24 @@ class AdminUserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = AdminUserSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
+
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return AdminCreateUserSerializer
+        return super().get_serializer_class()
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(
+            {
+                'success': True,
+                'message': f'Staff account created for {user.email}.',
+                'data': AdminUserSerializer(user).data,
+            },
+            status=status.HTTP_201_CREATED,
+        )
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['role', 'is_active', 'department']
     search_fields = ['email', 'first_name', 'last_name', 'department', 'institution']

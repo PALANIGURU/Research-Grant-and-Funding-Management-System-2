@@ -1,1 +1,174 @@
 @import "tailwindcss";
+
+@theme {
+  /* Ocean palette — derived from #0F1F40 */
+  --color-ocean-50:  #F2F5FA;
+  --color-ocean-100: #E1E8F5;
+  --color-ocean-200: #C3D0E8;
+  --color-ocean-300: #9AAED6;
+  --color-ocean-400: #6D87BE;
+  --color-ocean-500: #46609E;
+  --color-ocean-600: #2E4478;
+  --color-ocean-700: #21335C;
+  --color-ocean-800: #172647;
+  --color-ocean-900: #0F1F40; /* brand "Ocean" */
+  --color-ocean-950: #0A1530;
+
+  --font-display: "Cambria", "Georgia", serif;
+  --font-body: "Calibri", "Arial", sans-serif;
+}
+
+/* ---------- Ocean glass-card component ---------- */
+.ocean-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(33, 51, 92, 0.75), rgba(15, 31, 64, 0.92));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  color: #FFFFFF;
+  box-shadow: 0 20px 50px -12px rgba(10, 21, 48, 0.55);
+}
+
+.ocean-card__title {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+.ocean-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+.ocean-card__meta-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.ocean-card__meta-label {
+  font-weight: 700;
+  color: #FFFFFF;
+  min-width: 3.2rem;
+}
+
+.ocean-card__meta-value {
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.02em;
+}
+
+.ocean-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.ocean-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+/* ---------- Hero banner animation ---------- */
+@keyframes float-blob-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(40px, -30px) scale(1.08); }
+  66%      { transform: translate(-25px, 20px) scale(0.95); }
+}
+
+@keyframes float-blob-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-35px, 30px) scale(1.1); }
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-blob-1 {
+  animation: float-blob-1 14s ease-in-out infinite;
+}
+
+.hero-blob-2 {
+  animation: float-blob-2 18s ease-in-out infinite;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.fade-up-delay-1 { animation-delay: 0.1s; }
+.fade-up-delay-2 { animation-delay: 0.2s; }
+.fade-up-delay-3 { animation-delay: 0.3s; }
+/* ---------- Dynamic gradient + particle background (login panel) ---------- */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-mesh {
+  background: linear-gradient(
+    120deg,
+    #0F1F40 0%,
+    #21335C 25%,
+    #2E4478 50%,
+    #172647 75%,
+    #0A1530 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-shift 16s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-140px) translateX(var(--drift, 20px));
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 219, 252, 0.9) 0%, rgba(201, 219, 252, 0) 70%);
+  animation: particle-float linear infinite;
+  pointer-events: none;
+}

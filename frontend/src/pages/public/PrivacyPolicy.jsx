@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full mb-4">
+      <span className="inline-block text-xs font-semibold text-ocean-800 bg-ocean-50 px-3 py-1 rounded-full mb-4">
         Legal
       </span>
       <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
         <h2 className={headingClass}>7. Contact Us</h2>
         <p className={textClass}>
           Questions about this policy can be sent through our{' '}
-          <a href="/contact" className="text-blue-600 hover:underline">
+          <a href="/contact" className="text-ocean-700 hover:underline">
             Contact page
           </a>
           .

@@ -8,10 +8,10 @@ export const loginUser = (email, password) =>
   apiClient.post('/auth/login/', { email, password }).then((res) => res.data)
 
 export const fetchProfile = () =>
-  apiClient.get('/auth/profile/').then((res) => res.data)
+  apiClient.get('/auth/profile/').then((res) => res.data.data)
 
 export const updateProfile = (payload) =>
-  apiClient.patch('/auth/profile/', payload).then((res) => res.data)
+  apiClient.patch('/auth/profile/', payload).then((res) => res.data.data)
 
 export const changePassword = (payload) =>
   apiClient.post('/auth/change-password/', payload).then((res) => res.data)

@@ -5,6 +5,7 @@ import logging
 from django.db.models import Count, Sum
 from core.exceptions import BusinessLogicError
 from .models import Grant, GrantStatus
+from notifications.services import NotificationService
 
 logger = logging.getLogger('grants_system')
 
@@ -51,6 +52,14 @@ class GrantService:
             f"Grant {grant.reference_number} status updated from {old_status} "
             f"to {new_status} by {user.email}"
         )
+
+        if new_status == GrantStatus.OPEN:
+            NotificationService.notify_grant_opened(grant)
+        elif new_status == GrantStatus.AWARDED:
+            NotificationService.notify_grant_awarded(grant)
+        elif new_status == GrantStatus.COMPLETED:
+            NotificationService.notify_grant_completed(grant)
+
         return grant
 
     @staticmethod

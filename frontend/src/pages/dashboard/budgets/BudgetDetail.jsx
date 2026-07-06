@@ -215,7 +215,7 @@ export default function BudgetDetail() {
               <button
                 onClick={() => handleStatusAction(freezeBudget)}
                 disabled={actionLoading}
-                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-slate-50"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-ocean-50"
               >
                 Freeze
               </button>
@@ -240,7 +240,7 @@ export default function BudgetDetail() {
           {isFinance && (
             <button
               onClick={() => setShowItemForm((v) => !v)}
-              className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:underline"
+              className="inline-flex items-center gap-1.5 text-sm text-ocean-700 hover:underline"
             >
               <Plus className="h-4 w-4" />
               Add Item
@@ -254,7 +254,7 @@ export default function BudgetDetail() {
               <select
                 value={itemForm.category}
                 onChange={(e) => setItemForm({ ...itemForm, category: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               >
                 {CATEGORY_OPTIONS.map((c) => (
                   <option key={c} value={c}>
@@ -267,7 +267,7 @@ export default function BudgetDetail() {
                 placeholder="Description"
                 value={itemForm.description}
                 onChange={(e) => setItemForm({ ...itemForm, description: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
               <input
                 required
@@ -277,13 +277,13 @@ export default function BudgetDetail() {
                 placeholder="Amount allocated"
                 value={itemForm.amount_allocated}
                 onChange={(e) => setItemForm({ ...itemForm, amount_allocated: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
             </div>
             <button
               type="submit"
               disabled={actionLoading}
-              className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+              className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
             >
               Save Item
             </button>
@@ -321,7 +321,7 @@ export default function BudgetDetail() {
           <h2 className="font-semibold text-slate-800">Disbursements</h2>
           <button
             onClick={() => setShowDisbForm((v) => !v)}
-            className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm text-ocean-700 hover:underline"
           >
             <Plus className="h-4 w-4" />
             Request Disbursement
@@ -339,14 +339,14 @@ export default function BudgetDetail() {
                 placeholder="Amount"
                 value={disbForm.amount}
                 onChange={(e) => setDisbForm({ ...disbForm, amount: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
               <input
                 required
                 type="date"
                 value={disbForm.disbursement_date}
                 onChange={(e) => setDisbForm({ ...disbForm, disbursement_date: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
             </div>
             <textarea
@@ -355,12 +355,12 @@ export default function BudgetDetail() {
               value={disbForm.description}
               onChange={(e) => setDisbForm({ ...disbForm, description: e.target.value })}
               rows={2}
-              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
             <button
               type="submit"
               disabled={actionLoading}
-              className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+              className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
             >
               Submit Request
             </button>
@@ -408,7 +408,7 @@ export default function BudgetDetail() {
                       <button
                         onClick={() => handleDisbursementAction(d.id, disburseDisbursement)}
                         disabled={actionLoading}
-                        className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+                        className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
                       >
                         Mark Disbursed
                       </button>

@@ -5,6 +5,7 @@ import logging
 from django.utils import timezone
 from core.exceptions import BusinessLogicError
 from .models import Milestone, MilestoneStatus, ProgressReport, ReportStatus
+from notifications.services import NotificationService
 
 logger = logging.getLogger('grants_system')
 
@@ -21,9 +22,12 @@ class ReportService:
             status__in=[MilestoneStatus.PENDING, MilestoneStatus.IN_PROGRESS]
         )
         
+        milestones_list = list(overdue_milestones)
         count = overdue_milestones.update(status=MilestoneStatus.OVERDUE)
         if count > 0:
             logger.info(f"Cron check: updated {count} milestones to OVERDUE.")
+            for milestone in milestones_list:
+                NotificationService.notify_milestone_overdue(milestone)
         return count
 
     @staticmethod
@@ -40,6 +44,7 @@ class ReportService:
         report.save(update_fields=['status', 'submitted_at'])
         
         logger.info(f"Progress Report {report.report_number} submitted by {user.email}")
+        NotificationService.notify_progress_report_submitted(report)
         return report
 
     @staticmethod
@@ -56,6 +61,7 @@ class ReportService:
         report.save(update_fields=['status', 'submitted_at'])
         
         logger.info(f"Final Report {report.report_number} submitted by {user.email}")
+        NotificationService.notify_final_report_submitted(report)
         return report
 
     @staticmethod

@@ -19,7 +19,7 @@ const STATUS_OPTIONS = [
 
 export default function ProposalsList() {
   const { user } = useAuth()
-  const isResearcher = user?.role === ROLES.RESEARCHER
+  const isApplicant = user?.role === ROLES.RESEARCHER || user?.role === ROLES.CLIENT
 
   const [proposals, setProposals] = useState([])
   const [count, setCount] = useState(0)
@@ -59,18 +59,18 @@ export default function ProposalsList() {
   return (
     <div className="space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <div>
+  <div>
           <h1 className="text-2xl font-bold text-slate-800">Proposals</h1>
           <p className="text-slate-500 text-sm mt-1">
-            {isResearcher
+            {isApplicant
               ? 'Track the proposals you have submitted.'
               : 'Review and manage submitted proposals.'}
           </p>
         </div>
-        {isResearcher && (
+        {isApplicant && (
           <Link
             to="/dashboard/proposals/new"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
+            className="inline-flex items-center gap-2 bg-ocean-900 hover:bg-ocean-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
           >
             <Plus className="h-4 w-4" />
             New Proposal
@@ -88,7 +88,7 @@ export default function ProposalsList() {
               setSearch(e.target.value)
             }}
             placeholder="Search by title, reference number..."
-            className="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
         <select
@@ -97,7 +97,7 @@ export default function ProposalsList() {
             setPage(1)
             setStatus(e.target.value)
           }}
-          className="border border-slate-200 rounded-lg text-sm px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-slate-200 rounded-lg text-sm px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-ocean-600"
         >
           {STATUS_OPTIONS.map((s) => (
             <option key={s} value={s}>
@@ -115,7 +115,7 @@ export default function ProposalsList() {
 
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500 text-xs uppercase">
+          <thead className="bg-ocean-50 text-slate-500 text-xs uppercase">
             <tr>
               <th className="text-left px-4 py-3">Title</th>
               <th className="text-left px-4 py-3">Grant</th>
@@ -140,11 +140,11 @@ export default function ProposalsList() {
               </tr>
             ) : (
               proposals.map((proposal) => (
-                <tr key={proposal.id} className="hover:bg-slate-50">
+                <tr key={proposal.id} className="hover:bg-ocean-50">
                   <td className="px-4 py-3">
                     <Link
                       to={`/dashboard/proposals/${proposal.id}`}
-                      className="font-medium text-blue-700 hover:underline"
+                      className="font-medium text-ocean-800 hover:underline"
                     >
                       {proposal.title}
                     </Link>

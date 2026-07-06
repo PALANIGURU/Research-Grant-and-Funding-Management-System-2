@@ -60,7 +60,7 @@ export default function GrantsList() {
         {canManage && (
           <Link
             to="/dashboard/grants/new"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
+            className="inline-flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition"
           >
             <Plus className="h-4 w-4" />
             New Grant
@@ -78,7 +78,7 @@ export default function GrantsList() {
               setSearch(e.target.value)
             }}
             placeholder="Search by title, reference number..."
-            className="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
           />
         </div>
         <select
@@ -87,7 +87,7 @@ export default function GrantsList() {
             setPage(1)
             setStatus(e.target.value)
           }}
-          className="border border-slate-200 rounded-lg text-sm px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-slate-200 rounded-lg text-sm px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-ocean-600"
         >
           {STATUS_OPTIONS.map((s) => (
             <option key={s} value={s}>
@@ -105,7 +105,7 @@ export default function GrantsList() {
 
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500 text-xs uppercase">
+          <thead className="bg-ocean-50 text-slate-500 text-xs uppercase">
             <tr>
               <th className="text-left px-4 py-3">Title</th>
               <th className="text-left px-4 py-3">Agency</th>
@@ -129,11 +129,11 @@ export default function GrantsList() {
               </tr>
             ) : (
               grants.map((grant) => (
-                <tr key={grant.id} className="hover:bg-slate-50">
+                <tr key={grant.id} className="hover:bg-ocean-50">
                   <td className="px-4 py-3">
                     <Link
                       to={`/dashboard/grants/${grant.id}`}
-                      className="font-medium text-blue-700 hover:underline"
+                      className="font-medium text-ocean-800 hover:underline"
                     >
                       {grant.title}
                     </Link>

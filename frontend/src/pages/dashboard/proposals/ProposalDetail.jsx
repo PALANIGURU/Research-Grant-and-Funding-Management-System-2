@@ -16,6 +16,7 @@ import {
 import { useAuth } from '../../../context/AuthContext'
 import { ROLES } from '../../../utils/roles'
 import StatusBadge from '../../../components/common/StatusBadge'
+import { getErrorMessage } from '../../../utils/errors'
 
 export default function ProposalDetail() {
   const { id } = useParams()
@@ -75,8 +76,7 @@ export default function ProposalDetail() {
       setShowRejectBox(false)
       setShowRevisionBox(false)
     } catch (err) {
-      const data = err.response?.data
-      setError(data ? Object.values(data).flat().join(' ') : 'Action failed.')
+      setError(getErrorMessage(err, 'Action failed.'))
     } finally {
       setActionLoading(false)
     }
@@ -106,8 +106,7 @@ export default function ProposalDetail() {
         recommendation: 'APPROVE',
       })
     } catch (err) {
-      const data = err.response?.data
-      setError(data ? Object.values(data).flat().join(' ') : 'Failed to submit review.')
+      setError(getErrorMessage(err, 'Failed to submit review.'))
     } finally {
       setActionLoading(false)
     }
@@ -124,10 +123,14 @@ export default function ProposalDetail() {
   if (!proposal) return null
 
   const canEdit = isOwner && ['DRAFT', 'REVISION_REQUESTED'].includes(proposal.status)
-  const canSubmit = isOwner && proposal.status === 'DRAFT'
-  const canResubmit = isOwner && proposal.status === 'REVISION_REQUESTED'
+  // Owner submits their own draft; Admin/Grant Manager can also submit on
+  // an applicant's behalf (e.g. proposal received outside the system).
+  const canSubmit = (isOwner || isManager) && proposal.status === 'DRAFT'
+  const canResubmit = (isOwner || isManager) && proposal.status === 'REVISION_REQUESTED'
   const canStartReview = isManager && proposal.status === 'SUBMITTED'
-  const canDecide = isManager && ['SUBMITTED', 'UNDER_REVIEW'].includes(proposal.status)
+  // Approve/Reject/Revision are only valid once a review cycle has actually
+  // started — the backend rejects a direct SUBMITTED -> APPROVED transition.
+  const canDecide = isManager && proposal.status === 'UNDER_REVIEW'
   const canReview = isReviewer && ['SUBMITTED', 'UNDER_REVIEW'].includes(proposal.status)
 
   return (
@@ -222,7 +225,7 @@ export default function ProposalDetail() {
           {canEdit && (
             <Link
               to={`/dashboard/proposals/${proposal.id}/edit`}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-slate-50"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-ocean-50"
             >
               <Pencil className="h-4 w-4" />
               Edit
@@ -232,7 +235,7 @@ export default function ProposalDetail() {
             <button
               onClick={() => runAction(submitProposal)}
               disabled={actionLoading}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
             >
               <Send className="h-4 w-4" />
               Submit Proposal
@@ -242,7 +245,7 @@ export default function ProposalDetail() {
             <button
               onClick={() => runAction(resubmitProposal)}
               disabled={actionLoading}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
             >
               <Send className="h-4 w-4" />
               Resubmit
@@ -252,7 +255,7 @@ export default function ProposalDetail() {
             <button
               onClick={() => runAction(startReview)}
               disabled={actionLoading}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-slate-50"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200 hover:bg-ocean-50"
             >
               Start Review
             </button>
@@ -356,7 +359,7 @@ export default function ProposalDetail() {
                 placeholder="Overall score"
                 value={reviewForm.score}
                 onChange={(e) => setReviewForm({ ...reviewForm, score: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
               <input
                 type="number"
@@ -365,7 +368,7 @@ export default function ProposalDetail() {
                 placeholder="Methodology"
                 value={reviewForm.methodology_score}
                 onChange={(e) => setReviewForm({ ...reviewForm, methodology_score: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
               <input
                 type="number"
@@ -374,7 +377,7 @@ export default function ProposalDetail() {
                 placeholder="Impact"
                 value={reviewForm.impact_score}
                 onChange={(e) => setReviewForm({ ...reviewForm, impact_score: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
               <input
                 type="number"
@@ -383,7 +386,7 @@ export default function ProposalDetail() {
                 placeholder="Feasibility"
                 value={reviewForm.feasibility_score}
                 onChange={(e) => setReviewForm({ ...reviewForm, feasibility_score: e.target.value })}
-                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
               />
             </div>
             <textarea
@@ -392,12 +395,12 @@ export default function ProposalDetail() {
               value={reviewForm.comments}
               onChange={(e) => setReviewForm({ ...reviewForm, comments: e.target.value })}
               rows={2}
-              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             />
             <select
               value={reviewForm.recommendation}
               onChange={(e) => setReviewForm({ ...reviewForm, recommendation: e.target.value })}
-              className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
             >
               <option value="APPROVE">Recommend Approve</option>
               <option value="REJECT">Recommend Reject</option>
@@ -406,7 +409,7 @@ export default function ProposalDetail() {
             <button
               type="submit"
               disabled={actionLoading}
-              className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
+              className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-ocean-700 hover:bg-ocean-800 disabled:opacity-60"
             >
               Submit Review
             </button>

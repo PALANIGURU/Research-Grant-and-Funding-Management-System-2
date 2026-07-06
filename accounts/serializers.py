@@ -5,12 +5,21 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from .models import UserRole
 
 User = get_user_model()
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    """Serializer for user registration with password confirmation."""
+    """
+    Serializer for public self-registration.
+
+    Public sign-up is for external Clients only. Staff roles (Admin, Grant
+    Manager, Reviewer, Finance Officer, Researcher) are created internally
+    by an Administrator via the User Management screen, never through this
+    public endpoint. The `role` field is intentionally NOT accepted here —
+    any role value submitted in the request is ignored.
+    """
     password = serializers.CharField(
         write_only=True,
         min_length=8,
@@ -25,8 +34,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'email', 'first_name', 'last_name', 'password',
-            'password_confirm', 'role', 'phone', 'department',
-            'institution',
+            'password_confirm', 'phone', 'department', 'institution',
         ]
         extra_kwargs = {
             'first_name': {'required': True},
@@ -45,6 +53,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        validated_data['role'] = UserRole.CLIENT
         return User.objects.create_user(**validated_data)
 
 
@@ -58,11 +67,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'id', 'email', 'first_name', 'last_name', 'full_name',
             'role', 'phone', 'department', 'institution', 'bio',
             'profile_picture', 'email_verified', 'date_joined',
-            'last_login',
+            'last_login', 'is_superuser',
         ]
         read_only_fields = [
             'id', 'email', 'role', 'email_verified',
-            'date_joined', 'last_login',
+            'date_joined', 'last_login', 'is_superuser',
         ]
 
     def get_full_name(self, obj):
@@ -120,3 +129,37 @@ class AdminUserSerializer(serializers.ModelSerializer):
 
     def get_full_name(self, obj):
         return obj.get_full_name()
+class AdminCreateUserSerializer(serializers.ModelSerializer):
+    """
+    Serializer used by Administrators to create internal staff accounts
+    (Admin, Grant Manager, Reviewer, Finance Officer, Researcher) from the
+    User Management screen. Unlike public registration, any role may be
+    assigned here since the request is already gated behind IsAdmin.
+    """
+    password = serializers.CharField(
+        write_only=True,
+        min_length=8,
+        style={'input_type': 'password'},
+    )
+
+    class Meta:
+        model = User
+        fields = [
+            'id', 'email', 'first_name', 'last_name', 'password',
+            'role', 'phone', 'department', 'institution',
+        ]
+        extra_kwargs = {
+            'first_name': {'required': True},
+            'last_name': {'required': True},
+            'role': {'required': True},
+        }
+
+    def validate_password(self, value):
+        try:
+            validate_password(value)
+        except ValidationError as e:
+            raise serializers.ValidationError(list(e.messages))
+        return value
+
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
