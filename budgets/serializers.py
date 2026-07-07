@@ -56,7 +56,7 @@ class BudgetListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Budget
         fields = [
-            'id', 'grant_title', 'grant_reference', 'total_allocated',
+            'id', 'title', 'grant_title', 'grant_reference', 'total_allocated',
             'total_spent', 'remaining_amount', 'utilization_percentage', 'status',
         ]
 
@@ -77,16 +77,12 @@ class BudgetDetailSerializer(serializers.ModelSerializer):
 class BudgetCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Budget
-        fields = ['grant', 'total_allocated', 'notes']
-
-    def validate(self, attrs):
+        fields = ['id', 'grant', 'title', 'total_allocated', 'notes']
+        read_only_fields = ['id']
+def validate(self, attrs):
         grant = attrs.get('grant')
         if grant.status != 'AWARDED':
             raise serializers.ValidationError({
                 'grant': 'Budgets can only be created for awarded grants.'
-            })
-        if Budget.objects.filter(grant=grant).exists():
-            raise serializers.ValidationError({
-                'grant': 'A budget already exists for this grant.'
             })
         return attrs

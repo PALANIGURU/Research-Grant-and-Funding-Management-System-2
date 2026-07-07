@@ -427,6 +427,70 @@ export default function ProposalForm() {
           </button>
         </div>
       </form>
+
+      {isEdit && (
+        <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+          <h2 className="font-semibold text-slate-800">Supporting Documents</h2>
+          <p className="text-sm text-slate-500">
+            Upload research plans, budgets, CVs, or any other supporting files.
+          </p>
+
+          {uploadError && (
+            <div className="bg-red-50 text-red-700 text-sm px-3 py-2 rounded-lg border border-red-100">
+              {uploadError}
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Document Type
+            </label>
+            <select
+              value={documentType}
+              onChange={(e) => setDocumentType(e.target.value)}
+              className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-600"
+            >
+              {DOCUMENT_TYPES.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-ocean-200 rounded-lg py-8 cursor-pointer hover:border-ocean-400 hover:bg-ocean-50 transition">
+            {uploading ? (
+              <Loader2 className="h-6 w-6 text-ocean-700 animate-spin" />
+            ) : (
+              <Upload className="h-6 w-6 text-ocean-700" />
+            )}
+            <span className="text-sm text-slate-600">
+              {uploading ? 'Uploading...' : 'Click to choose a file'}
+            </span>
+            <input
+              type="file"
+              className="hidden"
+              onChange={handleFileChange}
+              disabled={uploading}
+            />
+          </label>
+
+          {attachments.length > 0 && (
+            <ul className="divide-y divide-slate-100 border border-slate-100 rounded-lg">
+              {attachments.map((a) => (
+                <li key={a.id} className="flex items-center gap-3 px-4 py-3 text-sm">
+                  <FileText className="h-4 w-4 text-ocean-700 shrink-0" />
+                  <span className="flex-1 text-slate-700 truncate">{a.file_name}</span>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-ocean-100 text-ocean-800 shrink-0">
+                    {a.document_type_display || a.document_type}
+                  </span>
+                  <span className="text-slate-400 text-xs shrink-0">{formatSize(a.file_size)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
   )
 }

@@ -63,3 +63,22 @@ INFO 2026-07-04 10:49:01,769 services 40736 7384 Proposal PRP-202607-E86753D4 tr
 INFO 2026-07-04 10:49:44,879 services 40736 7384 Proposal PRP-202607-E86753D4 transitioned from UNDER_REVIEW to REVISION_REQUESTED by user 12345678@gmail.com
 INFO 2026-07-06 09:43:45,126 signals 63268 42500 New user registered: MANIII12@gmail.com (role: CLIENT)
 INFO 2026-07-06 10:38:41,053 signals 71072 69924 New user registered: tamil@gmail.com (role: CLIENT)
+INFO 2026-07-06 11:47:50,719 signals 14648 71224 New user registered: saffrin@gmail.com (role: CLIENT)
+INFO 2026-07-06 12:18:28,693 services 48956 71880 Proposal PRP-202607-9BAE0D01 submitted by 12345678@gmail.com
+INFO 2026-07-06 12:18:28,698 services 48956 71880 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-9BAE0D01
+INFO 2026-07-06 12:18:31,565 services 48956 71880 Proposal PRP-202607-9BAE0D01 transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-06 12:18:31,581 services 48956 71880 Notification sent to saffrin@gmail.com: Proposal Under Review: PRP-202607-9BAE0D01
+INFO 2026-07-06 12:18:33,320 services 48956 71880 Proposal PRP-202607-9BAE0D01 transitioned from UNDER_REVIEW to APPROVED by user 12345678@gmail.com
+INFO 2026-07-06 12:18:33,328 services 48956 71880 Notification sent to saffrin@gmail.com: Proposal Approved! PRP-202607-9BAE0D01
+INFO 2026-07-06 15:34:01,736 signals 65304 53704 New user registered: lithesh@gmail.com (role: CLIENT)
+INFO 2026-07-06 15:45:56,702 signals 71544 59344 New user registered: bharath12@gmail.com (role: ADMIN)
+INFO 2026-07-07 09:54:41,146 services 15808 70480 Proposal PRP-202607-CFBFCF5A submitted by 12345678@gmail.com
+INFO 2026-07-07 09:54:41,149 services 15808 70480 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-CFBFCF5A
+INFO 2026-07-07 09:54:43,570 services 15808 70480 Proposal PRP-202607-CFBFCF5A transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-07 09:54:43,580 services 15808 70480 Notification sent to tyson0009888@gmail.com: Proposal Under Review: PRP-202607-CFBFCF5A
+INFO 2026-07-07 09:55:21,416 services 15808 70480 Proposal PRP-202607-CFBFCF5A transitioned from UNDER_REVIEW to REVISION_REQUESTED by user 12345678@gmail.com
+INFO 2026-07-07 09:55:21,426 services 15808 70480 Notification sent to tyson0009888@gmail.com: Revision Requested: PRP-202607-CFBFCF5A
+INFO 2026-07-07 09:57:24,120 signals 15808 76316 New user registered: jerry12@gmail.com (role: CLIENT)
+INFO 2026-07-07 10:37:12,078 signals 72036 71884 New user registered: tom@gmail.com (role: CLIENT)
+INFO 2026-07-07 10:45:44,921 signals 72036 75696 New user registered: dheepak@gmail.com (role: FINANCE_OFFICER)
+INFO 2026-07-07 11:51:47,041 signals 72036 65540 New user registered: dheepakmani12@gmail.com (role: CLIENT)

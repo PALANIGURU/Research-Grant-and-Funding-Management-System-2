@@ -92,14 +92,17 @@ export default function BudgetsList() {
             ) : (
               budgets.map((b) => (
                 <tr key={b.id} className="hover:bg-ocean-50">
-                  <td className="px-4 py-3">
+                 <td className="px-4 py-3">
                     <Link
                       to={`/dashboard/budgets/${b.id}`}
-                      className="font-medium text-ocean-800 hover:underline"
+                      className="font-medium text-blue-700 hover:underline"
                     >
-                      {b.grant_title}
+                      {b.title || b.grant_title}
                     </Link>
-                    <p className="text-xs text-slate-400">{b.grant_reference}</p>
+                    <p className="text-xs text-slate-400">
+                      {b.title ? b.grant_title : b.grant_reference}
+                      {b.title && b.grant_reference ? ` · ${b.grant_reference}` : ''}
+                    </p>
                   </td>
                   <td className="px-4 py-3 text-slate-600">
                     ${Number(b.total_allocated).toLocaleString()}

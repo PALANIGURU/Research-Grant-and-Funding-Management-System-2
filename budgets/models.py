@@ -33,10 +33,15 @@ class DisbursementStatus(models.TextChoices):
 
 class Budget(TimeStampedModel):
     """Overall budget for an awarded grant."""
-    grant = models.OneToOneField(
+    grant = models.ForeignKey(
         'grants.Grant',
         on_delete=models.CASCADE,
-        related_name='budget',
+        related_name='budgets',
+    )
+    title = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Optional custom name for this budget, distinct from the grant title.',
     )
     total_allocated = models.DecimalField(max_digits=15, decimal_places=2)
     total_spent = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)

@@ -162,7 +162,10 @@ export default function BudgetDetail() {
       <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div>
-            <h1 className="text-xl font-bold text-slate-800">{budget.grant?.title}</h1>
+           <h1 className="text-xl font-bold text-slate-800">{budget.title || budget.grant?.title}</h1>
+            {budget.title && (
+              <p className="text-sm text-slate-500 mt-0.5">For grant: {budget.grant?.title}</p>
+            )}
             <p className="text-sm text-slate-400 mt-1">{budget.grant?.reference_number}</p>
           </div>
           <StatusBadge status={budget.status} />

@@ -81,10 +81,11 @@ class ProposalCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Proposal
         fields = [
-            'grant', 'title', 'abstract', 'methodology',
+            'id', 'grant', 'title', 'abstract', 'methodology',
             'expected_outcomes', 'budget_requested', 'duration_months',
             'team_members',
         ]
+        read_only_fields = ['id']
 
     def validate(self, attrs):
         grant = attrs.get('grant')
