@@ -304,4 +304,5 @@ LOGGING = {
 }
 # AI Integration (Proposal Review Assistant)
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
-AI_MODEL_NAME = 'claude-sonnet-4-5-20250929'
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
+AI_MODEL_NAME = 'llama-3.3-70b-versatile'

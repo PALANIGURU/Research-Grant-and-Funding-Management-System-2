@@ -14,14 +14,14 @@ from accounts.permissions import (
     IsReviewer,
     IsOwnerOrAdmin,
 )
-from .models import Proposal, ProposalReview, ProposalAttachment, ProposalStatus
+from .models import Proposal, ProposalReview, ProposalAttachment, ProposalStatus, ProposalAIReview
+from . import ai_service
 from .serializers import (
     ProposalListSerializer,
     ProposalDetailSerializer,
     ProposalCreateSerializer,
     ProposalUpdateSerializer,
-    ProposalReviewSerializer,
-    ProposalReviewCreateSerializer,
+    ProposalAIReviewSerializer,
     ProposalAttachmentSerializer,
 )
 from .filters import ProposalFilter
@@ -120,28 +120,31 @@ class ProposalViewSet(viewsets.ModelViewSet):
         serializer = ProposalDetailSerializer(proposal)
         return Response({'success': True, 'data': serializer.data})
 
-    @action(detail=True, methods=['get', 'post'])
-    def reviews(self, request, pk=None):
-        proposal = self.get_object()
-        if request.method == 'GET':
-            reviews = proposal.reviews.all()
-            serializer = ProposalReviewSerializer(reviews, many=True)
-            return Response({'success': True, 'data': serializer.data})
-        else:
-            # Create a review (Reviewers/Admin/Managers only)
-            if request.user.role not in ['REVIEWER', 'ADMIN', 'GRANT_MANAGER']:
-                return Response(
-                    {'success': False, 'message': 'Only reviewers and managers can evaluate proposals.'},
-                    status=status.HTTP_403_FORBIDDEN
-                )
-            serializer = ProposalReviewCreateSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            review = serializer.save(proposal=proposal, reviewer=request.user)
+    @action(detail=True, methods=['post'])
+    def ai_review(self, request, pk=None):
+        if request.user.role not in ['ADMIN', 'GRANT_MANAGER']:
             return Response(
-                {'success': True, 'data': ProposalReviewSerializer(review).data},
-                status=status.HTTP_201_CREATED
+                {'success': False, 'message': 'Only admins and grant managers can run an AI review.'},
+                status=status.HTTP_403_FORBIDDEN
             )
-
+        proposal = self.get_object()
+        result = ai_service.generate_review_for_proposal(proposal)
+        review, _ = ProposalAIReview.objects.update_or_create(
+            proposal=proposal,
+            defaults={
+                'generated_by': request.user,
+                'summary': result['summary'],
+                'risk_score': result['risk_score'],
+                'risk_flags': result['risk_flags'],
+                'strengths': result['strengths'],
+                'weaknesses': result['weaknesses'],
+                'suggested_recommendation': result['suggested_recommendation'],
+                'raw_response': result['raw_response'],
+            }
+        )
+        serializer = ProposalAIReviewSerializer(review)
+        return Response({'success': True, 'data': serializer.data})
+        
     @action(detail=True, methods=['get', 'post'])
     def attachments(self, request, pk=None):
         proposal = self.get_object()

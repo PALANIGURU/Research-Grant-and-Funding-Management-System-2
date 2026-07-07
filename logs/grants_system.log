@@ -84,3 +84,14 @@ INFO 2026-07-07 10:45:44,921 signals 72036 75696 New user registered: dheepak@gm
 INFO 2026-07-07 11:51:47,041 signals 72036 65540 New user registered: dheepakmani12@gmail.com (role: CLIENT)
 INFO 2026-07-07 14:20:42,843 signals 70780 69896 New user registered: dharan12@gmail.com (role: ADMIN)
 INFO 2026-07-07 14:26:31,482 services 51928 78536 Proposal PRP-202607-CFBFCF5A transitioned from REVISION_REQUESTED to SUBMITTED by user tyson0009888@gmail.com
+INFO 2026-07-07 15:44:12,896 signals 73896 69304 New user registered: abc123@gmail.com (role: ADMIN)
+INFO 2026-07-07 16:08:52,172 services 78044 75504 Proposal PRP-202607-CFBFCF5A transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-07 16:08:52,180 services 78044 75504 Notification sent to tyson0009888@gmail.com: Proposal Under Review: PRP-202607-CFBFCF5A
+INFO 2026-07-07 16:11:13,821 signals 78044 75504 New user registered: abc12@gmail.com (role: CLIENT)
+INFO 2026-07-07 18:34:26,771 signals 74336 18496 New user registered: siva12@gmail.com (role: CLIENT)
+INFO 2026-07-07 22:24:07,795 services 77340 83464 Proposal PRP-202607-BCA05122 submitted by 12345678@gmail.com
+INFO 2026-07-07 22:24:07,798 services 77340 83464 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-BCA05122
+INFO 2026-07-07 22:24:09,461 services 77340 83464 Proposal PRP-202607-BCA05122 transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-07 22:24:09,475 services 77340 83464 Notification sent to siva12@gmail.com: Proposal Under Review: PRP-202607-BCA05122
+INFO 2026-07-07 22:24:11,460 services 77340 83464 Proposal PRP-202607-BCA05122 transitioned from UNDER_REVIEW to APPROVED by user 12345678@gmail.com
+INFO 2026-07-07 22:24:11,470 services 77340 83464 Notification sent to siva12@gmail.com: Proposal Approved! PRP-202607-BCA05122
