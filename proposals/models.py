@@ -149,3 +149,39 @@ class ProposalAttachment(TimeStampedModel):
 
     def __str__(self):
         return self.file_name
+    def __str__(self):
+        return self.file_name
+
+
+class ProposalAIReview(TimeStampedModel):
+    """AI-generated review assistant output for a proposal."""
+    proposal = models.OneToOneField(
+        Proposal,
+        on_delete=models.CASCADE,
+        related_name='ai_review',
+    )
+    generated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='generated_ai_reviews',
+    )
+    summary = models.TextField()
+    risk_score = models.PositiveIntegerField(
+        default=0,
+        validators=[MaxValueValidator(100)],
+        help_text='0 = low risk, 100 = high risk',
+    )
+    risk_flags = models.JSONField(default=list, blank=True)
+    strengths = models.JSONField(default=list, blank=True)
+    weaknesses = models.JSONField(default=list, blank=True)
+    suggested_recommendation = models.CharField(max_length=20, blank=True)
+    raw_response = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = 'Proposal AI Review'
+        verbose_name_plural = 'Proposal AI Reviews'
+
+    def __str__(self):
+        return f"AI Review for {self.proposal.reference_number}"

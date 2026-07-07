@@ -5,7 +5,7 @@ from rest_framework import serializers
 from django.db.models import Avg
 from accounts.serializers import UserListSerializer
 from grants.serializers import GrantListSerializer
-from .models import Proposal, ProposalReview, ProposalAttachment
+from .models import Proposal, ProposalAIReview, ProposalReview, ProposalAttachment
 
 
 class ProposalAttachmentSerializer(serializers.ModelSerializer):
@@ -61,13 +61,21 @@ class ProposalListSerializer(serializers.ModelSerializer):
     def get_average_score(self, obj):
         return obj.reviews.aggregate(avg=Avg('score'))['avg'] or 0.0
 
-
+class ProposalAIReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProposalAIReview
+        fields = [
+            'id', 'summary', 'risk_score', 'risk_flags', 'strengths',
+            'weaknesses', 'suggested_recommendation', 'created_at',
+        ]
+        read_only_fields = fields
 class ProposalDetailSerializer(serializers.ModelSerializer):
     grant = GrantListSerializer(read_only=True)
     submitted_by = UserListSerializer(read_only=True)
     reviews = ProposalReviewSerializer(many=True, read_only=True)
     attachments = ProposalAttachmentSerializer(many=True, read_only=True)
     average_score = serializers.SerializerMethodField()
+    ai_review = ProposalAIReviewSerializer(read_only=True)
 
     class Meta:
         model = Proposal

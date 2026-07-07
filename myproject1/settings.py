@@ -11,6 +11,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -301,3 +302,6 @@ LOGGING = {
         },
     },
 }
+# AI Integration (Proposal Review Assistant)
+ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
+AI_MODEL_NAME = 'claude-sonnet-4-5-20250929'
