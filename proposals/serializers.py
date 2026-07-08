@@ -18,7 +18,7 @@ class ProposalAttachmentSerializer(serializers.ModelSerializer):
             'id', 'file', 'file_name', 'file_size', 'document_type',
             'document_type_display', 'uploaded_by', 'description', 'created_at',
         ]
-        read_only_fields = ['id', 'file_size', 'uploaded_by', 'created_at']
+        read_only_fields = ['id', 'file_name', 'file_size', 'uploaded_by', 'created_at']
 
 class ProposalReviewSerializer(serializers.ModelSerializer):
     reviewer_name = serializers.SerializerMethodField()
@@ -104,12 +104,16 @@ class ProposalCreateSerializer(serializers.ModelSerializer):
                 'grant': 'This grant is currently closed and not accepting proposals.'
             })
 
-        # Check max proposal limit
-        existing_count = Proposal.objects.filter(grant=grant, submitted_by=user).count()
-        if existing_count >= grant.max_proposals_per_researcher:
+    def validate(self, attrs):
+        grant = attrs.get('grant')
+        user = self.context['request'].user
+
+        if not grant.is_open:
             raise serializers.ValidationError({
-                'grant': f'You have reached the maximum proposal limit of {grant.max_proposals_per_researcher} for this grant.'
+                'grant': 'This grant is currently closed and not accepting proposals.'
             })
+
+        return attrs
 
         return attrs
 

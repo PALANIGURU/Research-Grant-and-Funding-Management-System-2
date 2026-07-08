@@ -38,6 +38,9 @@ export const resubmitProposal = (id) =>
 export const getProposalReviews = (id) =>
   apiClient.get(`/proposals/submissions/${id}/reviews/`).then((res) => res.data)
 
+export const generateAIReview = (id) =>
+  apiClient.post(`/proposals/submissions/${id}/ai_review/`).then((res) => res.data)
+
 export const addProposalReview = (id, payload) =>
   apiClient.post(`/proposals/submissions/${id}/reviews/`, payload).then((res) => res.data)
 export const listAttachments = (proposalId) =>

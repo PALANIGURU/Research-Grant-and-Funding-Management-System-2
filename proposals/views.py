@@ -23,6 +23,8 @@ from .serializers import (
     ProposalUpdateSerializer,
     ProposalAIReviewSerializer,
     ProposalAttachmentSerializer,
+    ProposalReviewSerializer,
+    ProposalReviewCreateSerializer,
 )
 from .filters import ProposalFilter
 from .services import ProposalService
@@ -119,6 +121,27 @@ class ProposalViewSet(viewsets.ModelViewSet):
         proposal = ProposalService.transition_status(proposal, ProposalStatus.SUBMITTED, request.user)
         serializer = ProposalDetailSerializer(proposal)
         return Response({'success': True, 'data': serializer.data})
+
+    @action(detail=True, methods=['get', 'post'])
+    def reviews(self, request, pk=None):
+        proposal = self.get_object()
+        if request.method == 'GET':
+            review_qs = proposal.reviews.all()
+            serializer = ProposalReviewSerializer(review_qs, many=True)
+            return Response({'success': True, 'data': serializer.data})
+        else:
+            if request.user.role != 'REVIEWER':
+                return Response(
+                    {'success': False, 'message': 'Only reviewers can submit a review.'},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+            serializer = ProposalReviewCreateSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            review = serializer.save(proposal=proposal, reviewer=request.user)
+            return Response(
+                {'success': True, 'data': ProposalReviewSerializer(review).data},
+                status=status.HTTP_201_CREATED
+            )
 
     @action(detail=True, methods=['post'])
     def ai_review(self, request, pk=None):

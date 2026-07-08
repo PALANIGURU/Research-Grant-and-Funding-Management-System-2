@@ -61,7 +61,7 @@ class Proposal(TimeStampedModel):
         verbose_name = 'Proposal'
         verbose_name_plural = 'Proposals'
         ordering = ['-created_at']
-        unique_together = ['grant', 'submitted_by']
+    
 
     def __str__(self):
         return f"{self.reference_number or 'TEMP'} - {self.title}"

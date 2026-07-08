@@ -95,3 +95,539 @@ INFO 2026-07-07 22:24:09,461 services 77340 83464 Proposal PRP-202607-BCA05122 t
 INFO 2026-07-07 22:24:09,475 services 77340 83464 Notification sent to siva12@gmail.com: Proposal Under Review: PRP-202607-BCA05122
 INFO 2026-07-07 22:24:11,460 services 77340 83464 Proposal PRP-202607-BCA05122 transitioned from UNDER_REVIEW to APPROVED by user 12345678@gmail.com
 INFO 2026-07-07 22:24:11,470 services 77340 83464 Notification sent to siva12@gmail.com: Proposal Approved! PRP-202607-BCA05122
+ERROR 2026-07-08 00:06:47,635 exceptions 72500 65600 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000202986EDFD0>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:47,823 exceptions 72500 75472 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000202984CEC10>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:52,586 exceptions 72500 75472 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000202984CE850>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:52,692 exceptions 72500 75472 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000202984FA060>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:56,463 exceptions 72500 80156 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000202984F9CD0>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:56,503 exceptions 72500 65600 Unhandled exception in <proposals.views.ProposalViewSet object at 0x0000020298980050>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:57,778 exceptions 72500 65600 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000202985FD8C0>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:06:57,825 exceptions 72500 65600 Unhandled exception in <proposals.views.ProposalViewSet object at 0x0000020298503680>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:07:25,952 exceptions 72500 75472 Unhandled exception in <proposals.views.ProposalViewSet object at 0x000002029870FD50>: name 'ProposalListSerializer' is not defined
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 42, in list
+    serializer = self.get_serializer(page, many=True)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\generics.py", line 112, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 47, in get_serializer_class
+    elif user.role == 'REVIEWER':
+               ^^^^^^^^^^^^^^^^^^
+NameError: name 'ProposalListSerializer' is not defined
+ERROR 2026-07-08 00:14:16,102 exceptions 76148 5564 Unhandled exception in <proposals.views.ProposalViewSet object at 0x000001B2697874D0>: UNIQUE constraint failed: proposals_proposal.grant_id, proposals_proposal.submitted_by_id
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: proposals_proposal.grant_id, proposals_proposal.submitted_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 75, in perform_create
+    serializer.save(submitted_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\serializers.py", line 1011, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 669, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\models.py", line 71, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 874, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 966, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, insert_fields, returning_fields, raw
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 1220, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1918, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1925, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: proposals_proposal.grant_id, proposals_proposal.submitted_by_id
+ERROR 2026-07-08 00:16:31,397 exceptions 76340 83940 Unhandled exception in <proposals.views.ProposalViewSet object at 0x000002729BC33230>: UNIQUE constraint failed: proposals_proposal.grant_id, proposals_proposal.submitted_by_id
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: proposals_proposal.grant_id, proposals_proposal.submitted_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 75, in perform_create
+    serializer.save(submitted_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\serializers.py", line 1011, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 669, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\models.py", line 71, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 874, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 966, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, insert_fields, returning_fields, raw
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 1220, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1918, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1925, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: proposals_proposal.grant_id, proposals_proposal.submitted_by_id
+INFO 2026-07-08 00:27:35,944 services 80728 75852 Proposal PRP-202607-60E16271 submitted by siva12@gmail.com
+INFO 2026-07-08 00:27:35,948 services 80728 75852 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-60E16271
+INFO 2026-07-08 00:28:29,803 services 80728 64528 Proposal PRP-202607-60E16271 transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-08 00:28:29,812 services 80728 64528 Notification sent to siva12@gmail.com: Proposal Under Review: PRP-202607-60E16271
+INFO 2026-07-08 00:54:56,432 services 80728 83248 Proposal PRP-202607-60E16271 transitioned from UNDER_REVIEW to REJECTED by user 12345678@gmail.com
+INFO 2026-07-08 00:54:56,441 services 80728 83248 Notification sent to siva12@gmail.com: Proposal Update: PRP-202607-60E16271
+INFO 2026-07-08 00:59:45,320 signals 80728 83248 New user registered: anbu12@gmail.com (role: CLIENT)
+INFO 2026-07-08 01:04:24,683 services 80728 62220 Proposal PRP-202607-4C9BE6BE submitted by anbu12@gmail.com
+INFO 2026-07-08 01:04:24,686 services 80728 62220 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-4C9BE6BE
+INFO 2026-07-08 01:05:22,191 services 80728 83248 Proposal PRP-202607-4C9BE6BE transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-08 01:05:22,201 services 80728 83248 Notification sent to anbu12@gmail.com: Proposal Under Review: PRP-202607-4C9BE6BE
+INFO 2026-07-08 01:05:33,297 services 80728 83248 Proposal PRP-202607-4C9BE6BE transitioned from UNDER_REVIEW to REVISION_REQUESTED by user 12345678@gmail.com
+INFO 2026-07-08 01:05:33,304 services 80728 83248 Notification sent to anbu12@gmail.com: Revision Requested: PRP-202607-4C9BE6BE
+INFO 2026-07-08 01:25:06,739 services 80728 80632 Proposal PRP-202607-AD856D20 submitted by 12345678@gmail.com
+INFO 2026-07-08 01:25:06,741 services 80728 80632 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-AD856D20
+INFO 2026-07-08 10:18:20,635 services 81876 76572 Proposal PRP-202607-9234838F submitted by 12345678@gmail.com
+INFO 2026-07-08 10:18:20,641 services 81876 76572 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-9234838F
+INFO 2026-07-08 10:18:24,824 services 81876 76572 Proposal PRP-202607-9234838F transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-08 10:18:24,833 services 81876 76572 Notification sent to siva12@gmail.com: Proposal Under Review: PRP-202607-9234838F
+INFO 2026-07-08 10:18:42,727 services 81876 76572 Proposal PRP-202607-9234838F transitioned from UNDER_REVIEW to REVISION_REQUESTED by user 12345678@gmail.com
+INFO 2026-07-08 10:18:42,739 services 81876 76572 Notification sent to siva12@gmail.com: Revision Requested: PRP-202607-9234838F
+INFO 2026-07-08 10:34:50,313 signals 81876 81008 New user registered: rathianm@gmail.com (role: CLIENT)
+INFO 2026-07-08 10:39:47,222 services 81876 83636 Proposal PRP-202607-3CCDD534 submitted by rathianm@gmail.com
+INFO 2026-07-08 10:39:47,226 services 81876 83636 Bulk notification sent to 0 users: New Proposal Submitted: PRP-202607-3CCDD534
+INFO 2026-07-08 10:40:46,168 services 81876 85692 Proposal PRP-202607-3CCDD534 transitioned from SUBMITTED to UNDER_REVIEW by user 12345678@gmail.com
+INFO 2026-07-08 10:40:46,174 services 81876 85692 Notification sent to rathianm@gmail.com: Proposal Under Review: PRP-202607-3CCDD534
+INFO 2026-07-08 10:41:13,065 services 81876 85692 Proposal PRP-202607-3CCDD534 transitioned from UNDER_REVIEW to REVISION_REQUESTED by user 12345678@gmail.com
+INFO 2026-07-08 10:41:13,072 services 81876 85692 Notification sent to rathianm@gmail.com: Revision Requested: PRP-202607-3CCDD534
+ERROR 2026-07-08 11:16:48,357 ai_service 84220 81624 AI review request failed for proposal 4c9be6be-6fed-4a9e-bdb7-a262c6de78fa: Connection error.
+ERROR 2026-07-08 11:16:48,362 exceptions 84220 81624 Unhandled exception in <proposals.views.ProposalViewSet object at 0x000001CA648A3250>: Could not reach the AI review service. Please try again later.
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1007, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 143, in generate_review_for_proposal
+    response = client.chat.completions.create(
+        model=settings.AI_MODEL_NAME,
+    ...<5 lines>...
+        max_tokens=1024,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1039, in request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 154, in ai_review
+    result = ai_service.generate_review_for_proposal(proposal)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 154, in generate_review_for_proposal
+    raise BusinessLogicError(
+    ...<3 lines>...
+    )
+core.exceptions.BusinessLogicError: Could not reach the AI review service. Please try again later.
+ERROR 2026-07-08 11:17:03,230 ai_service 84220 81624 AI review request failed for proposal 4c9be6be-6fed-4a9e-bdb7-a262c6de78fa: Connection error.
+ERROR 2026-07-08 11:17:03,231 exceptions 84220 81624 Unhandled exception in <proposals.views.ProposalViewSet object at 0x000001CA647F4850>: Could not reach the AI review service. Please try again later.
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1007, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 143, in generate_review_for_proposal
+    response = client.chat.completions.create(
+        model=settings.AI_MODEL_NAME,
+    ...<5 lines>...
+        max_tokens=1024,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1039, in request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 154, in ai_review
+    result = ai_service.generate_review_for_proposal(proposal)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 154, in generate_review_for_proposal
+    raise BusinessLogicError(
+    ...<3 lines>...
+    )
+core.exceptions.BusinessLogicError: Could not reach the AI review service. Please try again later.

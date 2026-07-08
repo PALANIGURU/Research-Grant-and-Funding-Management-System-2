@@ -1,7 +1,17 @@
 // src/pages/dashboard/proposals/ProposalDetail.jsx
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, Pencil, Send, CheckCircle, XCircle, RotateCcw } from 'lucide-react'
+import {
+  ArrowLeft,
+  Pencil,
+  Send,
+  CheckCircle,
+  XCircle,
+  RotateCcw,
+  FileText,
+  Download,
+  Sparkles,
+} from 'lucide-react'
 import {
   getProposal,
   submitProposal,
@@ -12,6 +22,8 @@ import {
   resubmitProposal,
   getProposalReviews,
   addProposalReview,
+  listAttachments,
+  generateAIReview,
 } from '../../../api/proposalsService'
 import { useAuth } from '../../../context/AuthContext'
 import { ROLES } from '../../../utils/roles'
@@ -25,6 +37,7 @@ export default function ProposalDetail() {
 
   const [proposal, setProposal] = useState(null)
   const [reviews, setReviews] = useState([])
+  const [attachments, setAttachments] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [actionLoading, setActionLoading] = useState(false)
@@ -32,6 +45,10 @@ export default function ProposalDetail() {
   const [revisionComments, setRevisionComments] = useState('')
   const [showRejectBox, setShowRejectBox] = useState(false)
   const [showRevisionBox, setShowRevisionBox] = useState(false)
+
+  const [aiReview, setAiReview] = useState(null)
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiError, setAiError] = useState('')
 
   const [reviewForm, setReviewForm] = useState({
     score: '',
@@ -55,6 +72,8 @@ export default function ProposalDetail() {
       setProposal(data)
       const reviewData = await getProposalReviews(id)
       setReviews(reviewData.data ?? [])
+      const attachmentData = await listAttachments(id)
+      setAttachments(attachmentData.data ?? [])
     } catch {
       setError('Failed to load proposal.')
     } finally {
@@ -79,6 +98,19 @@ export default function ProposalDetail() {
       setError(getErrorMessage(err, 'Action failed.'))
     } finally {
       setActionLoading(false)
+    }
+  }
+
+  const handleGenerateAIReview = async () => {
+    setAiLoading(true)
+    setAiError('')
+    try {
+      const result = await generateAIReview(id)
+      setAiReview(result.data)
+    } catch (err) {
+      setAiError(getErrorMessage(err, 'Failed to generate AI review.'))
+    } finally {
+      setAiLoading(false)
     }
   }
 
@@ -112,6 +144,10 @@ export default function ProposalDetail() {
     }
   }
 
+  const fileOrigin = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/api\/?$/, '')
+  const attachmentUrl = (fileUrl) =>
+    fileUrl?.startsWith('http') ? fileUrl : `${fileOrigin}${fileUrl}`
+
   if (loading) return <p className="text-slate-400">Loading...</p>
   if (error && !proposal) {
     return (
@@ -123,13 +159,9 @@ export default function ProposalDetail() {
   if (!proposal) return null
 
   const canEdit = isOwner && ['DRAFT', 'REVISION_REQUESTED'].includes(proposal.status)
-  // Owner submits their own draft; Admin/Grant Manager can also submit on
-  // an applicant's behalf (e.g. proposal received outside the system).
   const canSubmit = (isOwner || isManager) && proposal.status === 'DRAFT'
   const canResubmit = (isOwner || isManager) && proposal.status === 'REVISION_REQUESTED'
   const canStartReview = isManager && proposal.status === 'SUBMITTED'
-  // Approve/Reject/Revision are only valid once a review cycle has actually
-  // started — the backend rejects a direct SUBMITTED -> APPROVED transition.
   const canDecide = isManager && proposal.status === 'UNDER_REVIEW'
   const canReview = isReviewer && ['SUBMITTED', 'UNDER_REVIEW'].includes(proposal.status)
 
@@ -326,6 +358,119 @@ export default function ProposalDetail() {
           </div>
         )}
       </div>
+
+      <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-3">
+        <h2 className="font-semibold text-slate-800">Supporting Documents</h2>
+        {attachments.length === 0 ? (
+          <p className="text-sm text-slate-400">No documents were attached.</p>
+        ) : (
+          <div className="space-y-2">
+            {attachments.map((a) => (
+              <a
+                key={a.id}
+                href={attachmentUrl(a.file)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between border border-slate-100 rounded-lg px-3 py-2 text-sm hover:bg-ocean-50"
+              >
+                <span className="flex items-center gap-2 text-slate-700">
+                  <FileText className="h-4 w-4 text-slate-400" />
+                  {a.file_name}
+                  <span className="text-slate-400">({a.document_type_display})</span>
+                </span>
+                <Download className="h-4 w-4 text-slate-400" />
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {isManager && (
+        <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="font-semibold text-slate-800 flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-purple-500" />
+              AI Review Assistant
+            </h2>
+            <button
+              onClick={handleGenerateAIReview}
+              disabled={aiLoading}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 disabled:opacity-60"
+            >
+              {aiLoading ? 'Generating...' : 'Generate AI Review'}
+            </button>
+          </div>
+
+          {aiError && (
+            <div className="bg-red-50 text-red-700 text-sm px-4 py-3 rounded-lg border border-red-100">
+              {aiError}
+            </div>
+          )}
+
+          {aiReview && (
+            <div className="space-y-4 border-t border-slate-100 pt-4">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-slate-700">Risk Score</p>
+                <span
+                  className={`text-sm font-bold px-2.5 py-1 rounded-full ${
+                    aiReview.risk_score >= 70
+                      ? 'bg-red-100 text-red-700'
+                      : aiReview.risk_score >= 40
+                      ? 'bg-orange-100 text-orange-700'
+                      : 'bg-green-100 text-green-700'
+                  }`}
+                >
+                  {aiReview.risk_score} / 100
+                </span>
+              </div>
+
+              <div>
+                <p className="text-sm font-medium text-slate-700 mb-1">Summary</p>
+                <p className="text-sm text-slate-600 whitespace-pre-line">{aiReview.summary}</p>
+              </div>
+
+              {aiReview.risk_flags?.length > 0 && (
+                <div>
+                  <p className="text-sm font-medium text-slate-700 mb-1">Risk Flags</p>
+                  <ul className="list-disc list-inside text-sm text-red-600 space-y-0.5">
+                    {aiReview.risk_flags.map((flag, i) => (
+                      <li key={i}>{flag}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {aiReview.strengths?.length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-slate-700 mb-1">Strengths</p>
+                    <ul className="list-disc list-inside text-sm text-green-700 space-y-0.5">
+                      {aiReview.strengths.map((s, i) => (
+                        <li key={i}>{s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {aiReview.weaknesses?.length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-slate-700 mb-1">Weaknesses</p>
+                    <ul className="list-disc list-inside text-sm text-orange-700 space-y-0.5">
+                      {aiReview.weaknesses.map((w, i) => (
+                        <li key={i}>{w}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex items-center justify-between border-t border-slate-100 pt-3">
+                <p className="text-sm font-medium text-slate-700">Suggested Recommendation</p>
+                <StatusBadge status={aiReview.suggested_recommendation} />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
         <h2 className="font-semibold text-slate-800">Reviews</h2>
