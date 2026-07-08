@@ -631,3 +631,6 @@ Traceback (most recent call last):
     ...<3 lines>...
     )
 core.exceptions.BusinessLogicError: Could not reach the AI review service. Please try again later.
+INFO 2026-07-08 12:02:33,824 signals 79188 77696 New user registered: project12@gmail.com (role: ADMIN)
+INFO 2026-07-08 12:25:18,940 signals 45524 75004 New user registered: freefire2026@gmail.com (role: CLIENT)
+INFO 2026-07-08 12:26:58,222 signals 45524 75004 New user registered: battleground@gmail.com (role: CLIENT)

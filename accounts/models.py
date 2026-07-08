@@ -44,8 +44,8 @@ class CustomUserManager(BaseUserManager):
 
 
 phone_validator = RegexValidator(
-    regex=r'^\+?1?\d{9,15}$',
-    message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+    regex=r'^(\+91)?[6-9]\d{9}$',
+    message="Phone number must be a 10-digit number starting with 6, 7, 8, or 9 (optionally prefixed with +91)."
 )
 
 

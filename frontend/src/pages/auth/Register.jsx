@@ -30,10 +30,24 @@ export default function Register() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const phoneRegex = /^(\+91)?[6-9]\d{9}$/
+
+  const validatePhone = () => {
+    if (form.phone && !phoneRegex.test(form.phone)) {
+      setFieldErrors((prev) => ({
+        ...prev,
+        phone: ['Phone number must be a 10-digit number starting with 6, 7, 8, or 9 (optionally prefixed with +91).'],
+      }))
+      return false
+    }
+    return true
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setGeneralError('')
     setFieldErrors({})
+    if (!validatePhone()) return
     setSubmitting(true)
     try {
       await register(form)
@@ -76,7 +90,7 @@ export default function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-ocean-50 px-4 py-10">
       <div className="w-full max-w-lg bg-white rounded-xl shadow-md p-8 border border-slate-200">
-    <h1 className="text-2xl font-bold text-slate-800 mb-1">Create a client account</h1>
+        <h1 className="text-2xl font-bold text-slate-800 mb-1">Create a client account</h1>
         <p className="text-slate-500 mb-6 text-sm">
           Register to submit and track your grant applications. Staff accounts
           are created internally by an administrator.
@@ -154,8 +168,6 @@ export default function Register() {
             </div>
           </div>
 
- 
-
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>Institution</label>
@@ -185,6 +197,7 @@ export default function Register() {
               name="phone"
               value={form.phone}
               onChange={handleChange}
+              onBlur={validatePhone}
               className={inputClass}
               placeholder="+91XXXXXXXXXX"
             />

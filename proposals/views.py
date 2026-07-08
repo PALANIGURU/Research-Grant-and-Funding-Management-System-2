@@ -145,12 +145,14 @@ class ProposalViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def ai_review(self, request, pk=None):
-        if request.user.role not in ['ADMIN', 'GRANT_MANAGER']:
+        proposal = self.get_object()
+        is_owner = proposal.submitted_by_id == request.user.id
+        is_manager = request.user.role in ['ADMIN', 'GRANT_MANAGER']
+        if not (is_owner or is_manager):
             return Response(
-                {'success': False, 'message': 'Only admins and grant managers can run an AI review.'},
+                {'success': False, 'message': 'You do not have permission to run an AI review on this proposal.'},
                 status=status.HTTP_403_FORBIDDEN
             )
-        proposal = self.get_object()
         result = ai_service.generate_review_for_proposal(proposal)
         review, _ = ProposalAIReview.objects.update_or_create(
             proposal=proposal,

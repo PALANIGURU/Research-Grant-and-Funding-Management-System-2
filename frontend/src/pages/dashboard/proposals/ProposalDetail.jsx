@@ -385,7 +385,7 @@ export default function ProposalDetail() {
         )}
       </div>
 
-      {isManager && (
+      {(isManager || isOwner) && (
         <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold text-slate-800 flex items-center gap-2">
