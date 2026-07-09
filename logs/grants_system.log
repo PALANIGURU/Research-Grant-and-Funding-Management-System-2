@@ -634,3 +634,208 @@ core.exceptions.BusinessLogicError: Could not reach the AI review service. Pleas
 INFO 2026-07-08 12:02:33,824 signals 79188 77696 New user registered: project12@gmail.com (role: ADMIN)
 INFO 2026-07-08 12:25:18,940 signals 45524 75004 New user registered: freefire2026@gmail.com (role: CLIENT)
 INFO 2026-07-08 12:26:58,222 signals 45524 75004 New user registered: battleground@gmail.com (role: CLIENT)
+ERROR 2026-07-08 16:26:15,755 ai_service 88512 61596 AI review request failed for proposal 4c9be6be-6fed-4a9e-bdb7-a262c6de78fa: Connection error.
+ERROR 2026-07-08 16:26:15,758 exceptions 88512 61596 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000226C333CC50>: Could not reach the AI review service. Please try again later.
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1007, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 143, in generate_review_for_proposal
+    response = client.chat.completions.create(
+        model=settings.AI_MODEL_NAME,
+    ...<5 lines>...
+        max_tokens=1024,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1039, in request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 156, in ai_review
+    result = ai_service.generate_review_for_proposal(proposal)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 154, in generate_review_for_proposal
+    raise BusinessLogicError(
+    ...<3 lines>...
+    )
+core.exceptions.BusinessLogicError: Could not reach the AI review service. Please try again later.
+ERROR 2026-07-08 16:26:24,977 ai_service 88512 61596 AI review request failed for proposal 4c9be6be-6fed-4a9e-bdb7-a262c6de78fa: Connection error.
+ERROR 2026-07-08 16:26:24,978 exceptions 88512 61596 Unhandled exception in <proposals.views.ProposalViewSet object at 0x00000226C333DF50>: Could not reach the AI review service. Please try again later.
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1007, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 143, in generate_review_for_proposal
+    response = client.chat.completions.create(
+        model=settings.AI_MODEL_NAME,
+    ...<5 lines>...
+        max_tokens=1024,
+    )
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\groq\_base_client.py", line 1039, in request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PALANI GURU K\AppData\Local\Programs\Python\Python314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\views.py", line 156, in ai_review
+    result = ai_service.generate_review_for_proposal(proposal)
+  File "C:\Users\PALANI GURU K\Research-Grant-and-Funding-Management-System-2\proposals\ai_service.py", line 154, in generate_review_for_proposal
+    raise BusinessLogicError(
+    ...<3 lines>...
+    )
+core.exceptions.BusinessLogicError: Could not reach the AI review service. Please try again later.
+INFO 2026-07-09 11:48:51,929 signals 87976 63388 New user registered: bharath123@gmail.com (role: CLIENT)
